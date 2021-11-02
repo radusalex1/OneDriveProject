@@ -1,2 +1,0 @@
-# OneDriveProject
-Project Modern C++
