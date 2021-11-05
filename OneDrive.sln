@@ -3,29 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneDrive", "OneDrive\OneDrive.vcxproj", "{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneDrive", "OneDrive\OneDrive.vcxproj", "{1087C854-0F88-4338-841F-C899B14CE04D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Debug|x64.ActiveCfg = Debug|x64
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Debug|x64.Build.0 = Debug|x64
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Debug|x86.ActiveCfg = Debug|Win32
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Debug|x86.Build.0 = Debug|Win32
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Release|x64.ActiveCfg = Release|x64
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Release|x64.Build.0 = Release|x64
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Release|x86.ActiveCfg = Release|Win32
-		{A74A74A8-76DE-4B1E-B3E0-2D1724C59734}.Release|x86.Build.0 = Release|Win32
+		{1087C854-0F88-4338-841F-C899B14CE04D}.Debug|x64.ActiveCfg = Debug|x64
+		{1087C854-0F88-4338-841F-C899B14CE04D}.Debug|x64.Build.0 = Debug|x64
+		{1087C854-0F88-4338-841F-C899B14CE04D}.Release|x64.ActiveCfg = Release|x64
+		{1087C854-0F88-4338-841F-C899B14CE04D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F67271D3-7893-4601-B07A-675E1E8BC57B}
+		SolutionGuid = {308EADFD-3032-4A0B-9CFB-024701853F86}
 	EndGlobalSection
 EndGlobal
