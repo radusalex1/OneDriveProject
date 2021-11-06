@@ -20,4 +20,10 @@ public:
 	const std::string& Get_surname();
 	const std::string& Get_email();
 	const std::string& Get_password();
+
+	void Set_ID(std::uint8_t ID);
+	void Set_Name(std::string name);
+	void Set_Surname(std::string surname);
+	void Set_Email(std::string email);
+	void Set_Password(std::string password);
 };

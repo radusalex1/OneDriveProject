@@ -32,3 +32,24 @@ const std::string& User::Get_password()
 {
 	return m_password;
 }
+
+void User::Set_ID(std::uint8_t ID)
+{
+	m_ID = ID;
+}
+void User::Set_Name(std::string name)
+{
+	m_name = name;
+}
+void User::Set_Surname(std::string surname)
+{
+	m_surname = surname;
+}
+void User::Set_Email(std::string email)
+{
+	m_email = email;
+}
+void User::Set_Password(std::string password)
+{
+	m_password = password;
+}
