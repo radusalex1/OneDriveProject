@@ -99,11 +99,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
     <QtUic Include="onedrive.ui" />
     <QtMoc Include="onedrive.h" />
     <ClCompile Include="onedrive.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

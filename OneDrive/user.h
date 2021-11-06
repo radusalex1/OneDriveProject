@@ -5,13 +5,19 @@
 class User
 {
 private:
-	std::uint8_t ID;
-	std::string name;
-	std::string surname;
-	std::string email;
-	std::string password;
+	std::uint8_t m_ID;
+	std::string m_name;
+	std::string m_surname;
+	std::string m_email;
+	std::string m_password;
 	
 public:
 	User();
 	User(const std::uint8_t& ID, const std::string& name, const std::string& surname, const std::string& email, const std::string& password);
+
+	const std::uint8_t& Get_ID();
+	const std::string& Get_name();
+	const std::string& Get_surname();
+	const std::string& Get_email();
+	const std::string& Get_password();
 };
