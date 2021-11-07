@@ -9,7 +9,9 @@ class OneDrive : public QWidget
 
 public:
     OneDrive(QWidget *parent = Q_NULLPTR);
-
+private slots:
+    void on_pushButton_login_clicked();
 private:
     Ui::OneDriveClass ui;
+    
 };
