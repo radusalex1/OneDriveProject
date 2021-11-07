@@ -99,14 +99,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="onedrive_register.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
     <QtUic Include="onedrive.ui" />
     <QtMoc Include="onedrive.h" />
     <ClCompile Include="onedrive.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="onedrive_register.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="onedrive_register.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
