@@ -25,3 +25,8 @@ void OneDrive::on_pushButton_login_clicked()
     }
 
 }
+
+void OneDrive::on_Close_clicked()
+{
+    close();
+}
