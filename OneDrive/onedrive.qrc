@@ -1,4 +1,7 @@
 <RCC>
-    <qresource prefix="OneDrive">
+    <qresource prefix="/OneDrive">
+        <file>C:/Users/Mircea/Downloads/abstract-background-with-ink.jpg</file>
+        <file>C:/Users/Mircea/Downloads/Cloud-removebg-preview.png</file>
+        <file>C:/Users/Mircea/Desktop/cloud.jpg</file>
     </qresource>
 </RCC>
