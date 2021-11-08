@@ -7,7 +7,7 @@ OneDrive::OneDrive(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    QPixmap background("..\BackgroundLoginImg.jpg");
+    QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
