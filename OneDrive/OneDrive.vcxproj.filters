@@ -62,4 +62,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\BackgroundLoginImg.jpg">
+      <Filter>Translation Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
