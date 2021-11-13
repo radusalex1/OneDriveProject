@@ -1,3 +1,3 @@
 # OneDriveProject
 Project Modern C++
-# you need to create a data base with fields username and password in postgre and modify connection string with your credentials
+# you need to create a database with fields username and password in postgre and modify connection string with your credentials
