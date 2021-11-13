@@ -46,9 +46,15 @@
     <ClCompile Include="onedrive_register.cpp">
       <Filter>Translation Files</Filter>
     </ClCompile>
+    <ClCompile Include="DataBaseConnect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBaseConnect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

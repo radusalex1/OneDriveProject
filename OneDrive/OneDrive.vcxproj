@@ -79,7 +79,8 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </QtRcc>
     <QtMoc>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -121,6 +122,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DataBaseConnect.cpp" />
     <ClCompile Include="onedrive_register.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
@@ -132,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="onedrive_register.h" />
+    <ClInclude Include="DataBaseConnect.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>

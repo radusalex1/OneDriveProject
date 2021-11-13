@@ -3,7 +3,8 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include<QDebug>
-#include <pqxx/pqxx>
+#include "DataBaseConnect.h"
+
 
 
 OneDrive::OneDrive(QWidget *parent)
@@ -19,38 +20,17 @@ OneDrive::OneDrive(QWidget *parent)
 
 void OneDrive::on_pushButton_login_clicked()
 {
-   
-    QString username = ui.line_username->text();
-    QString password = ui.line_password->text();
+    std::string username = ui.line_username->text().toStdString();
+    std::string password = ui.line_password->text().toStdString();
 
     /// <summary>
-    /// basically check here if username and password are corect;
+    /// basically check here if username and password are corect;-done
     /// </summary>
    
+    DataBaseConnect *dbc = new DataBaseConnect();
 
-    std::string connectionstring = "host=localhost port=5432 dbname=test user=postgres password =as";
-    qInfo("am ajuns aici");
-    try
+    if (dbc->isUser(username,password)) 
     {
-        pqxx::connection connectionobject(connectionstring.c_str());
-
-        pqxx::work worker(connectionobject);
-
-        pqxx::result response = worker.exec("select count(*)from users;");
-
-        for (size_t i = 0; i < response.size(); i++)
-        {
-            
-            //std::cout << " id: " << response[i][0] << " name: " << response[i][1] << " surname: " << response[i][2] << std::endl;
-        }
-    }
-    catch (const std::exception& e)
-    {
-        //std::cerr << e.what() << std::endl;
-    }
-  
-
-    if (username == "test" && password == "test") {
         QMessageBox::information(this, "Login", "Username and password is correct");
     }
     else {
