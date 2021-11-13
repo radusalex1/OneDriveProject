@@ -140,6 +140,9 @@
   <ItemGroup>
     <Image Include="BackgroundLoginImg.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="appconfig.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />

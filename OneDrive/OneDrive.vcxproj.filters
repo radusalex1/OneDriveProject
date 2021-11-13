@@ -73,4 +73,9 @@
       <Filter>Translation Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="appconfig.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

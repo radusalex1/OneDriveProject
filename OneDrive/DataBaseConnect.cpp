@@ -1,4 +1,5 @@
 #include "DataBaseConnect.h"
+#include <fstream>
 
 DataBaseConnect::DataBaseConnect()
 {
@@ -7,7 +8,9 @@ DataBaseConnect::DataBaseConnect()
 
 bool DataBaseConnect::isUser(std::string username, std::string password)
 {
-    std::string connectionstring = "host=localhost port=5432 dbname=test user=postgres password =as";
+    std::ifstream f("appconfig.txt");
+    std::string connectionstring;
+    std::getline(f, connectionstring);
 
     pqxx::connection connectionobject(connectionstring.c_str());
 
@@ -16,7 +19,7 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
     std::string q = "select * from users where username='" + username + "'" + "and password='" + password + "';"; /// nu am gasit alta metoda mai ok de a forma querryul
 
     pqxx::result result = worker.exec(q);
-   
+
     if (result[0][0].is_null())
     {
         return false;
@@ -25,5 +28,19 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
     {
         return true;
     }
+}
+void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::string password)
+{
+        std::ifstream f("appconfig.txt");
+        std::string connectionstring;
+        std::getline(f, connectionstring);
+
+        pqxx::connection connectionobject(connectionstring.c_str());
+
+        pqxx::work worker(connectionobject);
+                                                                                 
+        std::string querry = "INSERT INTO public.users(username, password) VALUES ('"+username+"','"+ password +"')";
+        worker.exec(querry);
 
 }
+

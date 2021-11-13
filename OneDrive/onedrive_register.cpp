@@ -2,6 +2,7 @@
 #include <string>
 #include <QMessageBox>
 #include <QPixmap>
+#include "DataBaseConnect.h"
 
 OneDriveRegister::OneDriveRegister(QWidget* parent)
     : QWidget(parent)
@@ -13,4 +14,14 @@ OneDriveRegister::OneDriveRegister(QWidget* parent)
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
+}
+
+void OneDriveRegister::on_pushButton_register_clicked()
+{
+    std::string newUserUsername = ui.line_username->text().toStdString();
+    std::string newUserPassword = ui.line_password->text().toStdString();
+    DataBaseConnect* dbc = new DataBaseConnect();
+
+    dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
+
 }
