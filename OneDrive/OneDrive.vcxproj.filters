@@ -63,7 +63,7 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\BackgroundLoginImg.jpg">
+    <Image Include="BackgroundLoginImg.jpg">
       <Filter>Translation Files</Filter>
     </Image>
   </ItemGroup>

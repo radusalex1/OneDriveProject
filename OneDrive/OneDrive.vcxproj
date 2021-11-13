@@ -135,7 +135,7 @@
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\BackgroundLoginImg.jpg" />
+    <Image Include="BackgroundLoginImg.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
