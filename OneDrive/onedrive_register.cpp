@@ -16,8 +16,9 @@ OneDriveRegister::OneDriveRegister(QWidget* parent)
     this->setPalette(palette);
 }
 
-void OneDriveRegister::on_pushButton_register_clicked()
+void OneDriveRegister::on_pushButton_registerMethod_clicked()
 {
+    close();
     std::string newUserUsername = ui.line_username->text().toStdString();
     std::string newUserPassword = ui.line_password->text().toStdString();
     DataBaseConnect* dbc = new DataBaseConnect();

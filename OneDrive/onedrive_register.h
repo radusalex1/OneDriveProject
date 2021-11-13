@@ -9,7 +9,8 @@ class OneDriveRegister : public QWidget
 
 public:
     OneDriveRegister(QWidget* parent = Q_NULLPTR);
-    void on_pushButton_register_clicked();
+private slots:
+    void on_pushButton_registerMethod_clicked();
 
 private:
     Ui::Form ui;

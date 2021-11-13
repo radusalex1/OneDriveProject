@@ -59,7 +59,7 @@
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_register">
+     <widget class="QPushButton" name="pushButton_registerMethod">
       <property name="text">
        <string>Register</string>
       </property>
