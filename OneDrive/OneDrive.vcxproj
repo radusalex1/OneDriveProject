@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DataBaseConnect.cpp" />
+    <ClCompile Include="onedrive_mainwindow.cpp" />
     <ClCompile Include="onedrive_register.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
@@ -130,15 +131,18 @@
     <QtMoc Include="onedrive.h" />
     <ClCompile Include="onedrive.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="onedrive_mainwindow.ui" />
     <QtUic Include="onedrive_register.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="onedrive_register.h" />
     <ClInclude Include="DataBaseConnect.h" />
+    <QtMoc Include="onedrive_mainwindow.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="BackgroundLoginImg.jpg" />
+    <Image Include="FolderImage.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="appconfig.txt" />

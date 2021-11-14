@@ -49,6 +49,9 @@
     <ClCompile Include="DataBaseConnect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="onedrive_mainwindow.cpp">
+      <Filter>Translation Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
@@ -62,14 +65,23 @@
     <QtUic Include="onedrive_register.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="onedrive_mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="onedrive_register.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="onedrive_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <Image Include="BackgroundLoginImg.jpg">
+      <Filter>Translation Files</Filter>
+    </Image>
+    <Image Include="FolderImage.jpg">
       <Filter>Translation Files</Filter>
     </Image>
   </ItemGroup>
