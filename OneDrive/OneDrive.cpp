@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include<QDebug>
 #include "DataBaseConnect.h"
+#include "onedrive_mainwindow.h"
 
 
 
@@ -31,7 +32,14 @@ void OneDrive::on_pushButton_login_clicked()
 
     if (dbc->isUser(username,password)) 
     {
-        QMessageBox::information(this, "Login", "Username and password is correct");
+        //QMessageBox::information(this, "Login", "Username and password is correct");
+        this->hide();
+        OneDriveMainWindow* mainWindow = new OneDriveMainWindow(this);
+        mainWindow->setWindowTitle("OneDrive - MainWindow");
+        mainWindow->setWindowFlags(Qt::Window);
+        mainWindow->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
+        QObject::connect(mainWindow, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
+        mainWindow->show();
     }
     else {
         QMessageBox::warning(this, "Login", "Username and password is not correct");

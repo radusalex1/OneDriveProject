@@ -13,5 +13,5 @@ private slots:
     void on_pushButton_addfile_clicked();
 
 private:
-    Ui::Form ui;
+    Ui::mainwindowUI ui;
 };

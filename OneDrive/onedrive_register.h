@@ -13,5 +13,5 @@ private slots:
     void on_pushButton_registerMethod_clicked();
 
 private:
-    Ui::Form ui;
+    Ui::registerUI ui;
 };
