@@ -42,7 +42,7 @@ void OneDrive::on_pushButton_register_clicked()
 {
     this->hide();
     onedriveRegister = new OneDriveRegister(this);
-    onedriveRegister->setWindowTitle("Register");
+    onedriveRegister->setWindowTitle("OneDrive - Register");
     onedriveRegister->setWindowFlags(Qt::Window);
     onedriveRegister->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
     QObject::connect(onedriveRegister, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
