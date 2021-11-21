@@ -36,6 +36,13 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     std::string newUserPassword = ui.line_password->text().toStdString();
     DataBaseConnect* dbc = new DataBaseConnect();
 
-    dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
-
+    if (dbc->isUser(newUserUsername, newUserPassword))
+    {
+        QMessageBox::warning(this, "Register", "Username and password are taken!");
+    }
+    else
+    {
+        dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
+    }
+   
 }
