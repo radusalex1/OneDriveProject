@@ -6,7 +6,7 @@
 OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
     : QWidget(parent)
 {
-    ui.setupUi(this);
+    ui.setupUi_mainwindowUI(this);
     QPixmap folderpic("FolderImage.jpg");
     int width = ui.label_foldericon->width();
     int height = ui.label_foldericon->height();

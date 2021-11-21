@@ -14,4 +14,5 @@ private slots:
 
 private:
     Ui::registerUI ui;
+    
 };
