@@ -1,4 +1,5 @@
 #include "onedrive_mainwindow.h"
+#include "onedrive_file_explorer.h"
 #include <string>
 #include <QMessageBox>
 #include <QPixmap>
@@ -21,5 +22,10 @@ OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
 
 void OneDriveMainWindow::on_pushButton_addfile_clicked()
 {
-    
+    OneDriveFileExplorer* onedriveFileExplorer = new OneDriveFileExplorer(this);
+    onedriveFileExplorer->setWindowTitle("OneDrive - File Explorer");
+    onedriveFileExplorer->setWindowFlags(Qt::Window);
+    onedriveFileExplorer->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
+    QObject::connect(onedriveFileExplorer, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
+    onedriveFileExplorer->show();
 }
