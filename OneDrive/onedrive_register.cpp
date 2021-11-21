@@ -24,13 +24,7 @@ OneDriveRegister::OneDriveRegister(QWidget* parent)
 
 void OneDriveRegister::on_pushButton_registerMethod_clicked()
 {
-    this->hide();
-    OneDrive* onedriveLogin = new OneDrive(this);
-    onedriveLogin->setWindowTitle("OneDrive - Login");
-    onedriveLogin->setWindowFlags(Qt::Window);
-    onedriveLogin->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
-    QObject::connect(onedriveLogin, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
-    onedriveLogin->show();
+    
 
     std::string newUserUsername = ui.line_username->text().toStdString();
     std::string newUserPassword = ui.line_password->text().toStdString();
@@ -43,6 +37,13 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     else
     {
         dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
+        this->hide();
+        OneDrive* onedriveLogin = new OneDrive(this);
+        onedriveLogin->setWindowTitle("OneDrive - Login");
+        onedriveLogin->setWindowFlags(Qt::Window);
+        onedriveLogin->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
+        QObject::connect(onedriveLogin, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
+        onedriveLogin->show();
     }
    
 }
