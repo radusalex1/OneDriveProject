@@ -12,7 +12,7 @@ class OneDriveFileExplorer : public QWidget
 public:
     OneDriveFileExplorer(QWidget* parent = Q_NULLPTR);
 private slots:
-
+    void on_treeView_clicked(QModelIndex index);
 private:
     Ui::fileExplorerUI ui;
     QFileSystemModel* dirmodel;

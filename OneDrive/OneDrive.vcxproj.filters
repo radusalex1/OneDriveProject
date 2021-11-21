@@ -52,6 +52,9 @@
     <ClCompile Include="onedrive_mainwindow.cpp">
       <Filter>Translation Files</Filter>
     </ClCompile>
+    <ClCompile Include="onedrive_file_explorer.cpp">
+      <Filter>Translation Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
@@ -68,12 +71,18 @@
     <QtUic Include="onedrive_mainwindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="onedrive_file_explorer.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="onedrive_register.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="onedrive_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="onedrive_file_explorer.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
