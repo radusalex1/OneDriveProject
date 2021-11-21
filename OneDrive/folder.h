@@ -33,4 +33,6 @@ public:
 
 	bool check_file_presence(File file);
 	bool check_folder_presence(Folder folder);
+	void check_file_names_duplicates();
+	void check_folder_names_duplicates();
 };

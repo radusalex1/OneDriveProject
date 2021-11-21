@@ -98,3 +98,24 @@ bool Folder::check_folder_presence(Folder folder)
 	}
 	return 0;
 }
+
+void Folder::check_file_names_duplicates()
+{
+	for (int index = 0; index < m_file_childs.size()-1; index++)
+	{
+		for (int index2 = 1; index2 < m_file_childs.size(); index++)
+			if (m_file_childs[index].Get_name() == m_file_childs[index2].Get_name())
+				std::cout << "There are two ore more files with the same name!";
+	}
+	
+}
+
+void Folder::check_folder_names_duplicates()
+{
+	for (int index = 0; index < m_folder_childs.size() - 1; index++)
+	{
+		for (int index2 = 1; index2 < m_folder_childs.size(); index++)
+			if (m_folder_childs[index].Get_name() == m_folder_childs[index2].Get_name())
+				std::cout << "There are two ore more folders with the same name!";
+	}
+}
