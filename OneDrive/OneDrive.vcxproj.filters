@@ -84,6 +84,9 @@
     <Image Include="FolderImage.jpg">
       <Filter>Translation Files</Filter>
     </Image>
+    <Image Include="Logo.png">
+      <Filter>Translation Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="appconfig.txt">

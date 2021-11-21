@@ -8,13 +8,18 @@
 OneDriveRegister::OneDriveRegister(QWidget* parent)
     : QWidget(parent)
 {
-   ui.setupUi_registerUI(this);
+   ui.setupUi(this);
    
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
+
+    QPixmap folderpic("Logo.png");
+    int width = ui.label_pic->width();
+    int height = ui.label_pic->height();
+    ui.label_pic->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 }
 
 void OneDriveRegister::on_pushButton_registerMethod_clicked()

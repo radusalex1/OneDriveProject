@@ -17,6 +17,11 @@ OneDrive::OneDrive(QWidget *parent)
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
+
+    QPixmap folderpic("Logo.png");
+    int width = ui.label_picture->width();
+    int height = ui.label_picture->height();
+    ui.label_picture->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 }   
 
 void OneDrive::on_pushButton_login_clicked()
