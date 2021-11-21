@@ -75,3 +75,26 @@ void Folder::Set_owner(std::string owner)
 	m_owner = owner;
 }
 
+bool Folder::check_file_presence(File file)
+{
+	for (int index = 0; index < m_file_childs.size(); ++index)
+	{
+		if (file.Get_name() == m_file_childs[index].Get_name())
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+bool Folder::check_folder_presence(Folder folder)
+{
+	for (int index = 0; index < m_file_childs.size(); ++index)
+	{
+		if (folder.Get_name() == m_folder_childs[index].Get_name())
+		{
+			return 1;
+		}
+	}
+	return 0;
+}

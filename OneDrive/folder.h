@@ -30,4 +30,7 @@ public:
 	void Set_folder_childs(std::vector<Folder> folder_childs);
 	void Set_file_childs(std::vector<File> file_childs);
 	void Set_owner(std::string owner);
+
+	bool check_file_presence(File file);
+	bool check_folder_presence(Folder folder);
 };
