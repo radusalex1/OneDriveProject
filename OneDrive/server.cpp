@@ -24,3 +24,36 @@ bool CTcpListener::Init()
 	
 	return wsInit == 0;
 }
+
+void CTcpListener::Cleanup()
+{
+	WSACleanup();
+}
+
+SOCKET CTcpListener::CreateSocket()
+{
+	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
+	if (listening != INVALID_SOCKET)
+	{
+		sockaddr_in hint;
+		hint.sin_family = AF_INET;
+		hint.sin_port = htons(m_port);
+		inet_pton(AF_INET, m_ipAddress.c_str(), &hint.sin_addr);
+
+		int bindOk = bind(listening, (sockaddr*)&hint, sizeof(hint));
+		if (bindOk != SOCKET_ERROR)
+		{
+			int listenOk = listen(listening, SOMAXCONN);
+			if (listenOk == SOCKET_ERROR)
+			{
+				return -1;
+			}
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
+	return listening;
+}

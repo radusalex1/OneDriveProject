@@ -61,6 +61,9 @@
     <ClCompile Include="folder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user.h">
@@ -73,6 +76,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="folder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
