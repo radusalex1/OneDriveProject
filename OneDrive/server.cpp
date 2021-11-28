@@ -57,3 +57,9 @@ SOCKET CTcpListener::CreateSocket()
 
 	return listening;
 }
+
+SOCKET CTcpListener::WaitForConnection(SOCKET listening)
+{
+	SOCKET client = accept(listening, NULL, NULL);
+	return client;
+}

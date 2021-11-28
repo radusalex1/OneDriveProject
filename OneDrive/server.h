@@ -16,7 +16,7 @@ private:
 	MessageReveivedHandler MessageReceived;
 
 	SOCKET CreateSocket();
-	SOCKET WaitForConnection();
+	SOCKET WaitForConnection(SOCKET listening);
 
 public:
 	CTcpListener(std::string ipAddress, int port, MessageReveivedHandler handler);
