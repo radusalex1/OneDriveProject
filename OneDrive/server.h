@@ -5,6 +5,7 @@
 #include <WS2tcpip.h>
 
 #pragma comment (lib, "WS2_32.lib")
+#define MAX_BUFFER_SIZE (4096)
 
 typedef void(*MessageReveivedHandler)(CTcpListener* listener, int socketId, std::string msg);
 

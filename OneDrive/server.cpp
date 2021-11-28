@@ -25,6 +25,41 @@ bool CTcpListener::Init()
 	return wsInit == 0;
 }
 
+void CTcpListener::Run()
+{
+	char buf[MAX_BUFFER_SIZE];
+
+	while (true)
+	{
+		SOCKET listening = CreateSocket();
+		if (listening == INVALID_SOCKET)
+		{
+			break;
+		}
+		SOCKET client = WaitForConnection(listening);
+		if (client != INVALID_SOCKET)
+		{
+			closesocket(listening);
+			int bytesReceived = 0;
+			do
+			{
+				ZeroMemory(buf, MAX_BUFFER_SIZE);
+				bytesReceived = recv(client, buf, MAX_BUFFER_SIZE, 0);
+				if (bytesReceived > 0)
+				{
+					if (MessageReceived != NULL)
+					{
+						MessageReceived(this, client, std::string(buf, 0, bytesReceived));
+					}
+				}
+
+			} while (bytesReceived > 0);
+
+			closesocket(client);
+		}
+	}
+}
+
 void CTcpListener::Cleanup()
 {
 	WSACleanup();
