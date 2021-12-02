@@ -11,29 +11,30 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTreeView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_mainwindowUI
+class Ui_Form_MainWindow
 {
 public:
     QPushButton *pushButton_addfile;
-    QLabel *label_foldericon;
+    QTreeView *treeView;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QString::fromUtf8("Form"));
-        Form->resize(603, 400);
+        Form->resize(600, 400);
         pushButton_addfile = new QPushButton(Form);
         pushButton_addfile->setObjectName(QString::fromUtf8("pushButton_addfile"));
         pushButton_addfile->setGeometry(QRect(30, 340, 91, 24));
-        label_foldericon = new QLabel(Form);
-        label_foldericon->setObjectName(QString::fromUtf8("label_foldericon"));
-        label_foldericon->setGeometry(QRect(30, 40, 111, 121));
+        treeView = new QTreeView(Form);
+        treeView->setObjectName(QString::fromUtf8("treeView"));
+        treeView->setGeometry(QRect(30, 20, 531, 301));
 
         retranslateUi(Form);
 
@@ -44,13 +45,12 @@ public:
     {
         Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
         pushButton_addfile->setText(QCoreApplication::translate("Form", "Add new file", nullptr));
-        label_foldericon->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class mainwindowUI : public Ui_mainwindowUI {};
+    class mainwindowUI: public Ui_Form_MainWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

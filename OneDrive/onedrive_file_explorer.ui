@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QTreeView" name="treeView">
+  <widget class="QTreeView" name="treeViewPC">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -23,12 +23,12 @@
     </rect>
    </property>
   </widget>
-  <widget class="QListView" name="listView">
+  <widget class="QTreeView" name="treeViewDrive">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>310</x>
      <y>10</y>
-     <width>271</width>
+     <width>281</width>
      <height>371</height>
     </rect>
    </property>

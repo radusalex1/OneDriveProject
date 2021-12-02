@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
+    <width>600</width>
     <height>400</height>
    </rect>
   </property>
@@ -26,17 +26,14 @@
     <string>Add new file</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_foldericon">
+  <widget class="QTreeView" name="treeView">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>40</y>
-     <width>111</width>
-     <height>121</height>
+     <y>20</y>
+     <width>531</width>
+     <height>301</height>
     </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
  </widget>

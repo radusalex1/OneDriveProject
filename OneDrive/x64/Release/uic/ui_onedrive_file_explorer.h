@@ -12,29 +12,28 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QListView>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_fileExplorerUI
+class Ui_Form_FileExplorer
 {
 public:
-    QTreeView *treeView;
-    QListView *listView;
+    QTreeView *treeViewPC;
+    QTreeView *treeViewDrive;
 
     void setupUi(QWidget *Form)
     {
         if (Form->objectName().isEmpty())
             Form->setObjectName(QString::fromUtf8("Form"));
         Form->resize(603, 400);
-        treeView = new QTreeView(Form);
-        treeView->setObjectName(QString::fromUtf8("treeView"));
-        treeView->setGeometry(QRect(10, 10, 281, 371));
-        listView = new QListView(Form);
-        listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(320, 10, 271, 371));
+        treeViewPC = new QTreeView(Form);
+        treeViewPC->setObjectName(QString::fromUtf8("treeViewPC"));
+        treeViewPC->setGeometry(QRect(10, 10, 281, 371));
+        treeViewDrive = new QTreeView(Form);
+        treeViewDrive->setObjectName(QString::fromUtf8("treeViewDrive"));
+        treeViewDrive->setGeometry(QRect(310, 10, 281, 371));
 
         retranslateUi(Form);
 
@@ -49,7 +48,7 @@ public:
 };
 
 namespace Ui {
-    class fileExplorerUI : public Ui_fileExplorerUI {};
+    class fileExplorerUI: public Ui_Form_FileExplorer {};
 } // namespace Ui
 
 QT_END_NAMESPACE
