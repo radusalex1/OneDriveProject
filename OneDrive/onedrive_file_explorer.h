@@ -16,5 +16,5 @@ private slots:
 private:
     Ui::fileExplorerUI ui;
     QFileSystemModel* dirmodel;
-    QFileSystemModel* filemodel;
+    QFileSystemModel* dirmodelDrive;
 };

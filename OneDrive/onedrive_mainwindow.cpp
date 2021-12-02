@@ -14,6 +14,13 @@ OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
     QPalette palette;
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
+
+    QString dirPath = "C:/";
+    dirmodel = new QFileSystemModel(this);
+    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    dirmodel->setRootPath(dirPath);
+
+    ui.treeView->setModel(dirmodel);
 }
 
 void OneDriveMainWindow::on_pushButton_addfile_clicked()

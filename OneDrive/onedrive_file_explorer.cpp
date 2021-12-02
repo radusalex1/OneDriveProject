@@ -12,11 +12,11 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
 
     ui.treeViewPC->setModel(dirmodel);
 
-    /*filemodel = new QFileSystemModel(this);
-    filemodel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
-    filemodel->setRootPath(dirPath);
+    dirmodelDrive = new QFileSystemModel(this);
+    dirmodelDrive->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    dirmodelDrive->setRootPath(dirPath);
 
-    ui.listView->setModel(filemodel);*/
+    ui.treeViewDrive->setModel(dirmodelDrive);
 }
 
 void OneDriveFileExplorer::on_treeView_clicked(QModelIndex index)

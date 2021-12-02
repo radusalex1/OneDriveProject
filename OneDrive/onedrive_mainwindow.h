@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QWidget>
+#include <QtCore>
+#include <QtGui>
 #include "ui_onedrive_mainwindow.h"
 
 class OneDriveMainWindow : public QWidget
@@ -14,4 +16,5 @@ private slots:
 
 private:
     Ui::mainwindowUI ui;
+    QFileSystemModel* dirmodel;
 };
