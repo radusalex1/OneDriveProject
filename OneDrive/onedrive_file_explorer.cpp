@@ -7,20 +7,20 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);
-    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs);
+    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
     dirmodel->setRootPath(dirPath);
 
-    ui.treeView->setModel(dirmodel);
+    ui.treeViewPC->setModel(dirmodel);
 
-    filemodel = new QFileSystemModel(this);
+    /*filemodel = new QFileSystemModel(this);
     filemodel->setFilter(QDir::NoDotAndDotDot | QDir::Files);
     filemodel->setRootPath(dirPath);
 
-    ui.listView->setModel(filemodel);
+    ui.listView->setModel(filemodel);*/
 }
 
 void OneDriveFileExplorer::on_treeView_clicked(QModelIndex index)
 {
-    QString dirPath = dirmodel->fileInfo(index).absoluteFilePath();
-    ui.listView->setRootIndex(filemodel->setRootPath(dirPath));
+    /*QString dirPath = dirmodel->fileInfo(index).absoluteFilePath();
+    ui.listView->setRootIndex(filemodel->setRootPath(dirPath));*/
 }

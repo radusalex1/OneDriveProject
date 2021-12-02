@@ -8,10 +8,6 @@ OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
-    QPixmap folderpic("FolderImage.jpg");
-    int width = ui.label_foldericon->width();
-    int height = ui.label_foldericon->height();
-    ui.label_foldericon->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
