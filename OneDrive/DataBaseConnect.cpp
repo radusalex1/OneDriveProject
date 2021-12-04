@@ -16,7 +16,7 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
 
     pqxx::work worker(connectionobject);
 
-    std::string q = "select * from users where username='" + username + "'" + "and password='" + password + "';"; /// nu am gasit alta metoda mai ok de a forma querryul
+    std::string q = "select * from users where username='" + username + "';"; /// nu am gasit alta metoda mai ok de a forma querryul
 
     pqxx::result result = worker.exec(q);
 

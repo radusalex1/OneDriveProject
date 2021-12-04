@@ -32,7 +32,7 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
 
     if (dbc->isUser(newUserUsername, newUserPassword))
     {
-        QMessageBox::warning(this, "Register", "Username and password are taken!");
+        QMessageBox::warning(this, "Register", "Username already exists!");
     }
     else
     {
