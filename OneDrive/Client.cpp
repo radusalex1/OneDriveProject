@@ -1,6 +1,7 @@
 #include "Client.h"
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <string>
 #include <WS2tcpip.h>
 /// <summary>
@@ -124,7 +125,7 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 
 }
 
-void Client::getFiles(std::string path)
+void Client::getFiles(std::string PathToFileToBeDownloaded,std::string PathWhereToDownload)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
 	int port = 54000;					  //listening port
@@ -164,57 +165,50 @@ void Client::getFiles(std::string path)
 		WSACleanup();
 		return;
 	}
-	char buf[32768];
 	std::string userInput;
-	std::cout << "1-get, 2-send" << std::endl;
 	userInput = "get";
-
-	std::ofstream file;
-	char fileRequested[FILENAME_MAX];
-	int fileDownloaded = 0;
-	long fileRequestedSize = 0;
-
-	strcpy(fileRequested, path.c_str());
 
 	int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
 
 	if (sendResult == SOCKET_ERROR)
 	{
 		std::cerr << "error\n";
+		
 	}
 	else
 	{
 		std::cerr << "server> i'm sending the file" << std::endl;
 	}
-	sendResult = send(sock, fileRequested, FILENAME_MAX, 0);
 
-	if (sendResult != SOCKET_ERROR)
+	std::ofstream file;
+
+	PathWhereToDownload += std::filesystem::path(PathToFileToBeDownloaded).filename().string();
+
+	sendResult = send(sock, PathToFileToBeDownloaded.c_str(), FILENAME_MAX, 0);
+
+	uint64_t fileSize = 0;
+	int bytesReceived = recv(sock, (char*)&fileSize, sizeof(uint64_t), 0);
+	if (bytesReceived > 0)
 	{
-		int bytesReceived = recv(sock, (char*)&fileRequestedSize, sizeof(long), 0);
-		ZeroMemory(buf, 4096);
-		//bytesReceived = recv(sock, buf, 32768, 0);
-
-		if (bytesReceived > 0)
+		file.open(PathWhereToDownload.c_str());
+		int64_t i = fileSize;
+		while (i > 0)
 		{
-			file.open(fileRequested, std::ios::binary, std::ios::trunc);
-			do {
-				memset(buf, 0, 4096);
-				bytesReceived = recv(sock, buf, 4096, 0);
-				if (bytesReceived == 0 || bytesReceived == -1)
-				{
-					break;
-				}
-				file.write(buf, bytesReceived);
-				fileDownloaded += bytesReceived;
-			} while (fileDownloaded < fileRequestedSize);
-			file.close();
+			const int64_t ssize = min((int64_t)i, (int64_t)4096);
+			char* buff = new char[ssize];
+			const int r = recv(sock, buff, ssize, 0);
+			if (r < 0)
+			{
+				break;
+			}
+			file.write(buff, r);
+			i -= r;
 		}
-
+		file.close();
 	}
 	else
 	{
 		std::cerr << "file not found\n";
 	}
-
 
 }

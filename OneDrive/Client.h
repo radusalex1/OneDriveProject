@@ -4,7 +4,7 @@ class Client
 {
 public:
 	void sendFiles(std::string,std::string);
-	void getFiles(std::string path);
+	void getFiles(std::string,std::string);
 
 };
 
