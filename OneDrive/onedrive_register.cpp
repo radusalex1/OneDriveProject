@@ -35,6 +35,10 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     {
         QMessageBox::warning(this, "Register", "Username already exists!");
     }
+    else if (newUserUsername=="")
+    {
+        QMessageBox::warning(this, "Register", "The username cannot be empty!");
+    }
     else
     {
         dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
