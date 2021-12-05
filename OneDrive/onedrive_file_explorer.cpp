@@ -6,6 +6,7 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     ui.setupUi(this);
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+    this->setWindowState(Qt::WindowMinimized);
     
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);

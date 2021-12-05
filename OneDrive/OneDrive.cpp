@@ -24,6 +24,7 @@ OneDrive::OneDrive(QWidget *parent)
     ui.label_picture->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+    
 }   
 
 void OneDrive::on_pushButton_login_clicked()
@@ -41,12 +42,13 @@ void OneDrive::on_pushButton_login_clicked()
     {
         //QMessageBox::information(this, "Login", "Username and password is correct");
         this->hide();
-        OneDriveMainWindow* mainWindow = new OneDriveMainWindow(this);
+        OneDriveMainWindow* mainWindow = new OneDriveMainWindow();
         mainWindow->setWindowTitle("OneDrive - MainWindow");
         mainWindow->setWindowFlags(Qt::Window);
         mainWindow->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
         QObject::connect(mainWindow, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
         mainWindow->show();
+        //mainWindow->setWindowState(Qt::WindowMinimized);
     }
     else {
         QMessageBox::warning(this, "Login", "Username and password is not correct");
@@ -56,7 +58,7 @@ void OneDrive::on_pushButton_login_clicked()
 void OneDrive::on_pushButton_register_clicked()
 {
     this->hide();
-    onedriveRegister = new OneDriveRegister(this);
+    onedriveRegister = new OneDriveRegister();
     onedriveRegister->setWindowTitle("OneDrive - Register");
     onedriveRegister->setWindowFlags(Qt::Window);
     onedriveRegister->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing

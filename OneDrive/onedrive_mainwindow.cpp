@@ -4,8 +4,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 
-OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
-    : QWidget(parent)
+OneDriveMainWindow::OneDriveMainWindow()
 {
     ui.setupUi(this);
 

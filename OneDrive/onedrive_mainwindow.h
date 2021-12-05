@@ -10,7 +10,7 @@ class OneDriveMainWindow : public QWidget
     Q_OBJECT
 
 public:
-    OneDriveMainWindow(QWidget* parent = Q_NULLPTR);
+    OneDriveMainWindow();
 private slots:
     void on_pushButton_addfile_clicked();
 

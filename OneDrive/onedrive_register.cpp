@@ -5,8 +5,7 @@
 #include <QPixmap>
 #include "DataBaseConnect.h"
 
-OneDriveRegister::OneDriveRegister(QWidget* parent)
-    : QWidget(parent)
+OneDriveRegister::OneDriveRegister()
 {
    ui.setupUi(this);
    
@@ -21,7 +20,7 @@ OneDriveRegister::OneDriveRegister(QWidget* parent)
     int height = ui.label_pic->height();
     ui.label_pic->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 
-    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon.
 }
 
 void OneDriveRegister::on_pushButton_registerMethod_clicked()
