@@ -35,9 +35,13 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     {
         QMessageBox::warning(this, "Register", "Username already exists!");
     }
-    else if (newUserUsername=="")
+    else if (newUserUsername == "")
     {
         QMessageBox::warning(this, "Register", "The username cannot be empty!");
+    }
+    else if (newUserPassword == "")
+    {
+        QMessageBox::warning(this, "Register", "The password cannot be empty!");
     }
     else
     {
