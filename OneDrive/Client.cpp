@@ -8,7 +8,7 @@
 /// send is for send files from client to server given the 
 /// </summary>
 /// <param name="path"></param>
-void Client::sendFiles(std::string path)
+void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
 	int port = 54000;					  //listening port
@@ -48,12 +48,12 @@ void Client::sendFiles(std::string path)
 		WSACleanup();
 		return;
 	}
-	char buf[32768];
+
 	std::string userInput;
-	std::cout << "1-get, 2-send" << std::endl;
 	userInput = "send";
 
 	int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+
 	if (sendResult == SOCKET_ERROR)
 	{
 		std::cerr << "error\n";
@@ -65,32 +65,56 @@ void Client::sendFiles(std::string path)
 	}
 
 	std::ifstream file;
-	char fileRequested[FILENAME_MAX];
 
-	strcpy(fileRequested, path.c_str());
+	std::string fileRequested;
 
-	file.open(fileRequested, std::ios::binary);
+	file.open(SourcePathFile);
 
 	if (file.is_open())
 	{
 		file.seekg(0, std::ios::end);
 		long fileSize = file.tellg();
+		int64_t bytesToBeSent = fileSize;
+
 		int bySendInfo = send(sock, (char*)&fileSize, sizeof(long), 0);
-		bySendInfo = send(sock, fileRequested, FILENAME_MAX, 0);
+		bySendInfo = send(sock, DestinationPath.c_str(), FILENAME_MAX, 0);
+		bySendInfo = send(sock, SourcePathFile.c_str(), FILENAME_MAX, 0);
+
 		file.seekg(0, std::ios::beg);
-		do
+
+		while (bytesToBeSent > 0)
 		{
-			file.read(buf, 4096);
-			if (file.gcount() > 0)
+			/// <summary>
+			/// 1894 primul caracter gresit!!!!!!!
+			/// </summary>
+
+			const int ssize = min((int)bytesToBeSent, (int)4096);
+			char* buf = new char[ssize];
+
+			strcpy(buf, "");
+
+			ZeroMemory(buf, sizeof(buf));
+
+			file.read(buf, ssize);
+
+			//removeChars(buf);
+
+			if (sizeof(buf) > ssize)
 			{
-				bySendInfo = send(sock, buf, file.gcount(), 0);
+				break;
 			}
-			if (bySendInfo == 0 || bySendInfo == -1) {
-				// error sending data - break loop
+			std::cerr << buf << std::endl;
+
+			bySendInfo = send(sock, buf, int(ssize), 0);
+
+			if (bySendInfo < 0)
+			{
 				closesocket(sock);
 				break;
 			}
-		} while (file.gcount() > 0);
+			bytesToBeSent -= bySendInfo;
+		}
+
 		file.close();
 	}
 	else

@@ -3,7 +3,7 @@
 class Client
 {
 public:
-	void sendFiles(std::string path);
+	void sendFiles(std::string,std::string);
 	void getFiles(std::string path);
 
 };
