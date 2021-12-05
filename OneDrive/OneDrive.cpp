@@ -22,6 +22,8 @@ OneDrive::OneDrive(QWidget *parent)
     int width = ui.label_picture->width();
     int height = ui.label_picture->height();
     ui.label_picture->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
+
+    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
 }   
 
 void OneDrive::on_pushButton_login_clicked()

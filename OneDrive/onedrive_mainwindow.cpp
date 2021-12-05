@@ -15,6 +15,8 @@ OneDriveMainWindow::OneDriveMainWindow(QWidget* parent)
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
 
+    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);
     dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
