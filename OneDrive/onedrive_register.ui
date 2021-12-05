@@ -69,6 +69,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_GoBack">
+      <property name="text">
+       <string>Return to login</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QLabel" name="label_pic">

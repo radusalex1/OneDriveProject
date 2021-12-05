@@ -48,3 +48,14 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     }
    
 }
+
+void OneDriveRegister::on_pushButton_GoBack_clicked()
+{
+    this->hide();
+    OneDrive* onedriveLogin = new OneDrive(this);
+    onedriveLogin->setWindowTitle("OneDrive - Login");
+    onedriveLogin->setWindowFlags(Qt::Window);
+    onedriveLogin->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
+    QObject::connect(onedriveLogin, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
+    onedriveLogin->show();
+}

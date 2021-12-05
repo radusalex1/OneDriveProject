@@ -11,6 +11,7 @@ public:
     OneDriveRegister();
 private slots:
     void on_pushButton_registerMethod_clicked();
+    void on_pushButton_GoBack_clicked();
 
 private:
     Ui::registerUI ui;

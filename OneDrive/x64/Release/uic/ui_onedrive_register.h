@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_registerUI
+class Ui_Form_Register
 {
 public:
     QGroupBox *groupBox;
@@ -34,6 +34,7 @@ public:
     QLabel *label_2;
     QLineEdit *line_password;
     QPushButton *pushButton_registerMethod;
+    QPushButton *pushButton_GoBack;
     QLabel *label_pic;
 
     void setupUi(QWidget *Form)
@@ -87,6 +88,11 @@ public:
 
         verticalLayout_2->addWidget(pushButton_registerMethod);
 
+        pushButton_GoBack = new QPushButton(groupBox);
+        pushButton_GoBack->setObjectName(QString::fromUtf8("pushButton_GoBack"));
+
+        verticalLayout_2->addWidget(pushButton_GoBack);
+
         label_pic = new QLabel(Form);
         label_pic->setObjectName(QString::fromUtf8("label_pic"));
         label_pic->setGeometry(QRect(28, 75, 181, 201));
@@ -103,13 +109,14 @@ public:
         label->setText(QCoreApplication::translate("Form", "Username", nullptr));
         label_2->setText(QCoreApplication::translate("Form", "Password", nullptr));
         pushButton_registerMethod->setText(QCoreApplication::translate("Form", "Register", nullptr));
+        pushButton_GoBack->setText(QCoreApplication::translate("Form", "Return to login", nullptr));
         label_pic->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class registerUI : public Ui_registerUI {};
+    class registerUI: public Ui_Form_Register {};
 } // namespace Ui
 
 QT_END_NAMESPACE
