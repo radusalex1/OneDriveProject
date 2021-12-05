@@ -11,12 +11,12 @@
 void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
-	int port = 54000;					  //listening port
+	uint32_t port = 54000;					  //listening port
 
 	///initialize winsock
 	WSADATA data;
 	WORD ver = MAKEWORD(2, 2);
-	int wsResult = WSAStartup(ver, &data);
+	uint32_t wsResult = WSAStartup(ver, &data);
 
 	if (wsResult != 0)
 	{
@@ -40,7 +40,7 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 	inet_pton(AF_INET, ipAddress.c_str(), &hint.sin_addr);
 
 	/// connect to server
-	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
+	uint32_t connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
 	if (connResult == SOCKET_ERROR)
 	{
 		std::cerr << "cant con to server, err#" << WSAGetLastError() << std::endl;
@@ -52,7 +52,7 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 	std::string userInput;
 	userInput = "send";
 
-	int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+	uint32_t sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
 
 	if (sendResult == SOCKET_ERROR)
 	{
@@ -88,7 +88,7 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 			/// 1894 primul caracter gresit!!!!!!!
 			/// </summary>
 
-			const int ssize = min((int)bytesToBeSent, (int)4096);
+			const uint32_t ssize = min((int)bytesToBeSent, (int)4096);
 			char* buf = new char[ssize];
 
 			strcpy(buf, "");
@@ -127,12 +127,12 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 void Client::getFiles(std::string path)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
-	int port = 54000;					  //listening port
+	uint32_t port = 54000;					  //listening port
 
 	///initialize winsock
 	WSADATA data;
 	WORD ver = MAKEWORD(2, 2);
-	int wsResult = WSAStartup(ver, &data);
+	uint32_t wsResult = WSAStartup(ver, &data);
 
 	if (wsResult != 0)
 	{
@@ -156,7 +156,7 @@ void Client::getFiles(std::string path)
 	inet_pton(AF_INET, ipAddress.c_str(), &hint.sin_addr);
 
 	/// connect to server
-	int connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
+	uint32_t connResult = connect(sock, (sockaddr*)&hint, sizeof(hint));
 	if (connResult == SOCKET_ERROR)
 	{
 		std::cerr << "cant con to server, err#" << WSAGetLastError() << std::endl;
@@ -171,12 +171,12 @@ void Client::getFiles(std::string path)
 
 	std::ofstream file;
 	char fileRequested[FILENAME_MAX];
-	int fileDownloaded = 0;
+	uint32_t fileDownloaded = 0;
 	long fileRequestedSize = 0;
 
 	strcpy(fileRequested, path.c_str());
 
-	int sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
+	uint32_t sendResult = send(sock, userInput.c_str(), userInput.size() + 1, 0);
 
 	if (sendResult == SOCKET_ERROR)
 	{
@@ -190,7 +190,7 @@ void Client::getFiles(std::string path)
 
 	if (sendResult != SOCKET_ERROR)
 	{
-		int bytesReceived = recv(sock, (char*)&fileRequestedSize, sizeof(long), 0);
+		uint32_t bytesReceived = recv(sock, (char*)&fileRequestedSize, sizeof(long), 0);
 		ZeroMemory(buf, 4096);
 		//bytesReceived = recv(sock, buf, 32768, 0);
 

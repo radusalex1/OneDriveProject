@@ -1,1 +1,1 @@
-host=localhost port=5432 dbname =test user=postgres password =as
+host=localhost port=5432 dbname =test user=postgres password =474747
