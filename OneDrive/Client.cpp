@@ -98,6 +98,53 @@ void Client_Class::sendFiles(std::string SourcePathFile,std::string DestinationP
 
 void Client_Class::getFiles(std::string PathToFileToBeDownloaded,std::string PathWhereToDownload)
 {
-	
+	SOCKET sock = initializeSocket();
+	std::ofstream file;
+	bool clientClose = false;
+	long fileRequestedsize = 0;
+
+	const int BUFFER_SIZE = 1024;
+	char bufferFile[BUFFER_SIZE];
+	//char fileRequested[FILENAME_MAX];
+
+	int fileDownloaded = 0;
+
+	std::string fileRequested = PathToFileToBeDownloaded;
+
+	std::filesystem::path p(fileRequested);
+	std::string fileName = p.filename().string();
+	std::string Path = PathWhereToDownload + fileName;
+
+	//std::cin.getline(fileRequested, FILENAME_MAX);
+
+	int byRecv = send(sock, fileRequested.c_str(), FILENAME_MAX, 0);
+	if (byRecv == 0 || byRecv == -1) {
+		sock = true;
+		return;
+	}
+
+
+	byRecv = recv(sock, (char*)&fileRequestedsize, sizeof(long), 0);
+	if (byRecv == 0 || byRecv == -1) {
+		clientClose = true;
+		return;
+	}
+
+	file.open(Path, std::ios::binary | std::ios::trunc);
+
+	do {
+		memset(bufferFile, 0, BUFFER_SIZE);
+		byRecv = recv(sock, bufferFile, BUFFER_SIZE, 0);
+
+		if (byRecv == 0 || byRecv == -1) {
+			clientClose = true;
+			break;
+			return;
+		}
+
+		file.write(bufferFile, byRecv);
+		fileDownloaded += byRecv;
+	} while (fileDownloaded < fileRequestedsize);
+	file.close();
 
 }
