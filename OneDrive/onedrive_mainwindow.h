@@ -8,13 +8,17 @@
 class OneDriveMainWindow : public QWidget
 {
     Q_OBJECT
-
+       
 public:
+
     OneDriveMainWindow();
+    OneDriveMainWindow(std::string username);
+
 private slots:
     void on_pushButton_addfile_clicked();
 
 private:
+    std::string Username;
     Ui::mainwindowUI ui;
     QFileSystemModel* dirmodel;
 };

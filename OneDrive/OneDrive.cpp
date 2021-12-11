@@ -31,18 +31,12 @@ void OneDrive::on_pushButton_login_clicked()
 {
     std::string username = ui.line_username->text().toStdString();
     std::string password = ui.line_password->text().toStdString();
-
-    /// <summary>
-    /// basically check here if username and password are corect;-done
-    /// </summary>
-   
     DataBaseConnect *dbc = new DataBaseConnect();
 
     if (dbc->isUser(username,password)) 
     {
-        //QMessageBox::information(this, "Login", "Username and password is correct");
         this->hide();
-        OneDriveMainWindow* mainWindow = new OneDriveMainWindow();
+        OneDriveMainWindow* mainWindow = new OneDriveMainWindow(username);
         mainWindow->setWindowTitle("OneDrive - MainWindow");
         mainWindow->setWindowFlags(Qt::Window);
         mainWindow->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing

@@ -3,6 +3,7 @@
 #include <string>
 #include <QMessageBox>
 #include <QPixmap>
+#include <QLabel>
 
 OneDriveMainWindow::OneDriveMainWindow()
 {
@@ -22,6 +23,7 @@ OneDriveMainWindow::OneDriveMainWindow()
     dirmodel->setRootPath(dirPath);
 
     ui.treeView->setModel(dirmodel);
+
 }
 
 void OneDriveMainWindow::on_pushButton_addfile_clicked()
@@ -32,4 +34,31 @@ void OneDriveMainWindow::on_pushButton_addfile_clicked()
     onedriveFileExplorer->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
     QObject::connect(onedriveFileExplorer, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
     onedriveFileExplorer->show();
+}
+
+OneDriveMainWindow::OneDriveMainWindow(std::string username)
+{
+    ui.setupUi(this);
+
+    QPixmap background("BackgroundLoginImg.jpg");
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, background);
+    this->setPalette(palette);
+
+    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+
+    QString dirPath = "C:/";
+    dirmodel = new QFileSystemModel(this);
+    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    dirmodel->setRootPath(dirPath);
+
+    ui.treeView->setModel(dirmodel);
+
+    this->Username = username;
+ 
+    QLabel *welcomeLabel = new QLabel(this);
+    std::string WelcomeMessage ="            welcome back:" + this->Username;
+    welcomeLabel->setText(WelcomeMessage.c_str());
+
 }
