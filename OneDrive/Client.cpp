@@ -35,9 +35,9 @@ SOCKET Client_Class::initializeSocket()
 	}
 	return clientSock;
 }
-void Client_Class::SendUserOption(SOCKET sock)
+void Client_Class::SendUserOption(SOCKET sock,std::string userOptionStr)
 {
-	int userOption = send(sock, userInputFunction().c_str(), sizeof(int), 0);
+	int userOption = send(sock, userOptionStr.c_str(), sizeof(int), 0);
 	if (userOption == 0 || userOption == -1) {
 		closesocket(sock);
 		WSACleanup();
@@ -52,6 +52,7 @@ void Client_Class::SendUserOption(SOCKET sock)
 void Client_Class::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 {
 	SOCKET sock = initializeSocket();
+	SendUserOption(sock, "get");
 	bool clientClose = false;
 
 	const int BUFFER_SIZE = 1024;
@@ -108,6 +109,7 @@ void Client_Class::sendFiles(std::string SourcePathFile,std::string DestinationP
 void Client_Class::getFiles(std::string PathToFileToBeDownloaded,std::string PathWhereToDownload)
 {
 	SOCKET sock = initializeSocket();
+	SendUserOption(sock, "send");
 	std::ofstream file;
 	bool clientClose = false;
 	long fileRequestedsize = 0;
