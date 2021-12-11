@@ -1,15 +1,46 @@
-#include "Client.h"
+#include "Client_Class.h"
 #include <iostream>
 #include <fstream>
 #include <filesystem>
 #include <string>
 #include <WS2tcpip.h>
+
+SOCKET Client_Class::initializeSocket()
+{
+	WSADATA wsData;
+	WORD ver = MAKEWORD(2, 2);
+
+	if (WSAStartup(ver, &wsData) != 0) {
+		std::cerr << "Error starting winsock!" << std::endl;
+		return -1;
+	}
+
+	SOCKET clientSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if (clientSock == INVALID_SOCKET) {
+		std::cerr << "Error creating socket!, " << WSAGetLastError() << std::endl;
+		return -1;
+	}
+	std::string serverAddress = "127.0.0.1";
+
+	sockaddr_in hint;
+	hint.sin_family = AF_INET;
+	hint.sin_port = htons(55000);
+	inet_pton(AF_INET, serverAddress.c_str(), &hint.sin_addr);
+	if (connect(clientSock, (sockaddr*)&hint, sizeof(hint)) == SOCKET_ERROR) {
+		std::cerr << "Error connect to server!, " << WSAGetLastError() << std::endl;
+		closesocket(clientSock);
+		WSACleanup();
+		return -1;
+	}
+	return clientSock;
+}
 /// <summary>
 /// get is for get file from server to client given the path from the server
 /// send is for send files from client to server given the 
 /// </summary>
 /// <param name="path"></param>
-void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
+void Client_Class::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
 	int port = 54000;					  //listening port
@@ -125,7 +156,7 @@ void Client::sendFiles(std::string SourcePathFile,std::string DestinationPath)
 
 }
 
-void Client::getFiles(std::string PathToFileToBeDownloaded,std::string PathWhereToDownload)
+void Client_Class::getFiles(std::string PathToFileToBeDownloaded,std::string PathWhereToDownload)
 {
 	std::string ipAddress = "127.0.0.1";  //ipadress
 	int port = 54000;					  //listening port

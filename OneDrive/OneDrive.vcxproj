@@ -129,7 +129,6 @@
     <ClCompile Include="onedrive_file_explorer.cpp" />
     <ClCompile Include="onedrive_mainwindow.cpp" />
     <ClCompile Include="onedrive_register.cpp" />
-    <ClCompile Include="server.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
     <QtUic Include="onedrive.ui" />
@@ -142,13 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="onedrive_register.h" />
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="Client_Class.h" />
     <ClInclude Include="DataBaseConnect.h" />
     <QtMoc Include="onedrive_mainwindow.h" />
     <QtMoc Include="onedrive_file_explorer.h" />
     <ClInclude Include="file.h" />
     <ClInclude Include="folder.h" />
-    <ClInclude Include="server.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>

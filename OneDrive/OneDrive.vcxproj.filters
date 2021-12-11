@@ -61,9 +61,6 @@
     <ClCompile Include="folder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="server.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Client.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,10 +78,7 @@
     <ClInclude Include="folder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="server.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Client.h">
+    <ClInclude Include="Client_Class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
