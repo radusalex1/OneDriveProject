@@ -35,6 +35,15 @@ SOCKET Client_Class::initializeSocket()
 	}
 	return clientSock;
 }
+void Client_Class::SendUserOption(SOCKET sock)
+{
+	int userOption = send(sock, userInputFunction().c_str(), sizeof(int), 0);
+	if (userOption == 0 || userOption == -1) {
+		closesocket(sock);
+		WSACleanup();
+		return;
+	}
+}
 /// <summary>
 /// get is for get file from server to client given the path from the server
 /// send is for send files from client to server given the 
