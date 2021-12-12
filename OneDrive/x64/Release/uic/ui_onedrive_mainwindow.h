@@ -23,6 +23,9 @@ class Ui_Form_MainWindow
 public:
     QPushButton *pushButton_addfile;
     QTreeView *treeView;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
 
     void setupUi(QWidget *Form)
     {
@@ -35,6 +38,15 @@ public:
         treeView = new QTreeView(Form);
         treeView->setObjectName(QString::fromUtf8("treeView"));
         treeView->setGeometry(QRect(30, 20, 531, 301));
+        pushButton = new QPushButton(Form);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(130, 340, 75, 24));
+        pushButton_2 = new QPushButton(Form);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(220, 340, 75, 24));
+        pushButton_3 = new QPushButton(Form);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        pushButton_3->setGeometry(QRect(310, 340, 91, 24));
 
         retranslateUi(Form);
 
@@ -45,6 +57,9 @@ public:
     {
         Form->setWindowTitle(QCoreApplication::translate("Form", "Form", nullptr));
         pushButton_addfile->setText(QCoreApplication::translate("Form", "Add new file", nullptr));
+        pushButton->setText(QCoreApplication::translate("Form", "Delete file", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Form", "Rename file", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("Form", "Create directory", nullptr));
     } // retranslateUi
 
 };
