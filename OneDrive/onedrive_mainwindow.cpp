@@ -29,7 +29,7 @@ OneDriveMainWindow::OneDriveMainWindow()
 
 void OneDriveMainWindow::on_pushButton_addfile_clicked()
 {
-    OneDriveFileExplorer* onedriveFileExplorer = new OneDriveFileExplorer(this);
+    OneDriveFileExplorer* onedriveFileExplorer = new OneDriveFileExplorer(this->Username, this);
     onedriveFileExplorer->setWindowTitle("OneDrive - File Explorer");
     onedriveFileExplorer->setWindowFlags(Qt::Window);
     onedriveFileExplorer->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
