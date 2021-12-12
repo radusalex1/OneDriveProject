@@ -41,6 +41,9 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 {
     ui.setupUi(this);
 
+    this->Username = username;
+    this->Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere.
+
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
@@ -49,24 +52,21 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
 
-    QString dirPath = "C:/";
+    QString dirPath = this->Path.c_str(); ///  aici ii dau calea catre directorul care trebuie afisat
     dirmodel = new QFileSystemModel(this);
     dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
     dirmodel->setRootPath(dirPath);
 
     ui.treeView->setModel(dirmodel);
 
-    this->Username = username;
-    this->Path = GetUserPathToFiles(this->Username);
     QLabel *welcomeLabel = new QLabel(this);
-    std::string WelcomeMessage ="            welcome back:" + this->Username;
+    std::string WelcomeMessage ="            welcome back:" + this->Username + " --- "+this->Path;
     welcomeLabel->setText(WelcomeMessage.c_str());
 
 }
 
-std::string GetUserPathToFiles(std::string username)
+std::string OneDriveMainWindow::GetUserPathToFiles()
 {
-    DataBaseConnect *dbc = new DataBaseConnect();
-    return dbc->GetUserPath(username);
-
+    DataBaseConnect* dbc = new DataBaseConnect();
+    return dbc->GetUserPath(this->Username);
 }

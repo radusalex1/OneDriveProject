@@ -22,4 +22,6 @@ private:
     std::string Path;
     Ui::mainwindowUI ui;
     QFileSystemModel* dirmodel;
+    std::string GetUserPathToFiles();
+
 };
