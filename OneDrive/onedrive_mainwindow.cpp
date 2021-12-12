@@ -58,9 +58,10 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
     dirmodel->setRootPath(dirPath);
 
     ui.treeView->setModel(dirmodel);
+    ui.treeView->setRootIndex(dirmodel->index(dirPath));
 
     QLabel *welcomeLabel = new QLabel(this);
-    std::string WelcomeMessage ="            welcome back:" + this->Username + " --- "+this->Path;
+    std::string WelcomeMessage ="            Welcome back: " + this->Username + " --- "+this->Path;
     welcomeLabel->setText(WelcomeMessage.c_str());
 
 }
