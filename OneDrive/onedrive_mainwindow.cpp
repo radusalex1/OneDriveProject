@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QLabel>
+#include "DataBaseConnect.h"
 
 OneDriveMainWindow::OneDriveMainWindow()
 {
@@ -56,9 +57,16 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
     ui.treeView->setModel(dirmodel);
 
     this->Username = username;
- 
+    this->Path = GetUserPathToFiles(this->Username);
     QLabel *welcomeLabel = new QLabel(this);
     std::string WelcomeMessage ="            welcome back:" + this->Username;
     welcomeLabel->setText(WelcomeMessage.c_str());
+
+}
+
+std::string GetUserPathToFiles(std::string username)
+{
+    DataBaseConnect *dbc = new DataBaseConnect();
+    return dbc->GetUserPath(username);
 
 }

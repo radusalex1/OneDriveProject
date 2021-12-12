@@ -48,3 +48,20 @@ void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::stri
 
 }
 
+std::string DataBaseConnect::GetUserPath(std::string username)
+{
+    std::ifstream f("appconfig.txt");
+    std::string connectionstring;
+    std::getline(f, connectionstring);
+
+    pqxx::connection connectionobject(connectionstring.c_str());
+
+    pqxx::work worker(connectionobject);
+
+    std::string q = "select * from users where username='" + username + "';"; /// nu am gasit alta metoda mai ok de a forma querryul
+
+    pqxx::result result = worker.exec(q);
+
+    return result[0][3].c_str();
+}
+

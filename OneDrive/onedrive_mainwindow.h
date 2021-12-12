@@ -19,6 +19,7 @@ private slots:
 
 private:
     std::string Username;
+    std::string Path;
     Ui::mainwindowUI ui;
     QFileSystemModel* dirmodel;
 };
