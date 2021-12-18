@@ -17,10 +17,12 @@ public:
 private slots:
     void on_pushButton_addfile_clicked();
     void on_pushButton_delete_clicked();
+    void on_treeView_clicked(QModelIndex index);
 
 private:
     std::string Username;
     std::string Path;
+    QString selectedFile;
     Ui::mainwindowUI ui;
     QFileSystemModel* dirmodel;
     std::string GetUserPathToFiles();

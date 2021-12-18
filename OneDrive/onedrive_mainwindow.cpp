@@ -65,6 +65,11 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 
 }
 
+void OneDriveMainWindow::on_treeView_clicked(QModelIndex index)
+{
+    selectedFile = dirmodel->fileInfo(index).absoluteFilePath();
+}
+
 std::string OneDriveMainWindow::GetUserPathToFiles()
 {
     DataBaseConnect* dbc = new DataBaseConnect();
