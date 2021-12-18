@@ -42,7 +42,7 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
     ui.setupUi(this);
 
     this->Username = username;
-    this->Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere.
+    this->Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere. -working
 
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -52,11 +52,10 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
 
-    QString dirPath = this->Path.c_str(); ///  aici ii dau calea catre directorul care trebuie afisat
+    QString dirPath = this->Path.c_str(); ///  aici ii dau calea catre directorul care trebuie afisat - working
     dirmodel = new QFileSystemModel(this);
     dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
     dirmodel->setRootPath(dirPath);
-
     ui.treeView->setModel(dirmodel);
     ui.treeView->setRootIndex(dirmodel->index(dirPath));
 

@@ -13,8 +13,9 @@ public:
     OneDriveFileExplorer(QWidget* parent = Q_NULLPTR);
     OneDriveFileExplorer(std::string username, QWidget* parent = Q_NULLPTR);
     std::string GetUserPathToFiles();
+   
 private slots:
-    void on_treeView_clicked(QModelIndex index);
+    void on_treeViewPC_clicked(QModelIndex index);
 private:
     std::string Username;
     std::string Path;

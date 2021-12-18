@@ -1,10 +1,9 @@
 #include "Client_Class.h"
-#include <iostream>
-#include <fstream>
-#include <filesystem>
-#include <string>
-#include <WS2tcpip.h>
-
+#include <QtCore/qlogging.h>
+Client_Class::Client_Class()
+{
+	//default
+}
 SOCKET Client_Class::initializeSocket()
 {
 	WSADATA wsData;
@@ -28,7 +27,7 @@ SOCKET Client_Class::initializeSocket()
 	hint.sin_port = htons(55000);
 	inet_pton(AF_INET, serverAddress.c_str(), &hint.sin_addr);
 	if (connect(clientSock, (sockaddr*)&hint, sizeof(hint)) == SOCKET_ERROR) {
-		std::cerr << "Error connect to server!, " << WSAGetLastError() << std::endl;
+		//std::cerr << "Error connect to server!, " << WSAGetLastError() << std::endl;
 		closesocket(clientSock);
 		WSACleanup();
 		return -1;
