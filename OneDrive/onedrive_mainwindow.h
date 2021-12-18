@@ -16,6 +16,7 @@ public:
 
 private slots:
     void on_pushButton_addfile_clicked();
+    void on_pushButton_delete_clicked();
 
 private:
     std::string Username;
