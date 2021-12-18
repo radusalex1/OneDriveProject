@@ -70,6 +70,11 @@ void OneDriveMainWindow::on_treeView_clicked(QModelIndex index)
     selectedFile = dirmodel->fileInfo(index).absoluteFilePath();
 }
 
+void OneDriveMainWindow::on_treeView_doubleClicked(QModelIndex index)
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
+}
+
 void OneDriveMainWindow::on_pushButton_delete_clicked()
 {
     QFile fileToDel = selectedFile;

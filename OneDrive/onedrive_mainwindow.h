@@ -18,6 +18,7 @@ private slots:
     void on_pushButton_addfile_clicked();
     void on_pushButton_delete_clicked();
     void on_treeView_clicked(QModelIndex index);
+    void on_treeView_doubleClicked(QModelIndex index);
 
 private:
     std::string Username;
