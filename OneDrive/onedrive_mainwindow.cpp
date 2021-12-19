@@ -86,6 +86,12 @@ void OneDriveMainWindow::on_pushButton_rename_clicked()
     currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
+void OneDriveMainWindow::on_pushButton_createdir_clicked()
+{
+    QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
+    QDir(this->Path.c_str()).mkdir(newName);
+}
+
 void OneDriveMainWindow::on_pushButton_delete_clicked()
 {
     QFile fileToDel = selectedFile;
