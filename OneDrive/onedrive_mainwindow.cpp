@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QLabel>
+#include <qinputdialog.h>
 #include "DataBaseConnect.h"
 
 OneDriveMainWindow::OneDriveMainWindow()
@@ -73,6 +74,16 @@ void OneDriveMainWindow::on_treeView_clicked(QModelIndex index)
 void OneDriveMainWindow::on_treeView_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
+}
+
+void OneDriveMainWindow::on_pushButton_rename_clicked()
+{
+    QString newName = QInputDialog::getText(this, "Rename file", "Enter a new name: ");
+
+    QFileInfo fileToChange(selectedFile);
+    QString extension = fileToChange.suffix();
+    QDir currentDir(this->Path.c_str());
+    currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
 void OneDriveMainWindow::on_pushButton_delete_clicked()

@@ -19,6 +19,7 @@ private slots:
     void on_pushButton_delete_clicked();
     void on_treeView_clicked(QModelIndex index);
     void on_treeView_doubleClicked(QModelIndex index);
+    void on_pushButton_rename_clicked();
 
 private:
     std::string Username;
