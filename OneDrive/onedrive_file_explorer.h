@@ -1,5 +1,4 @@
 #pragma once
-
 #include <QtWidgets/QWidget>
 #include <QtCore>
 #include <QtGui>

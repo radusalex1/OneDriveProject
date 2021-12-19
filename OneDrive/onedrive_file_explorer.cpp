@@ -116,9 +116,12 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
 
         int byRecv = send(sock, p.filename().string().c_str(), FILENAME_MAX, 0); //send filename
         send(sock, destinationPath.c_str(), FILENAME_MAX, 0); //send desti path
+
+        qDebug() << sock;
         qDebug() << byRecv;
         qDebug() << p.filename().string().c_str();
         qDebug() << destinationPath.c_str();
+
         if (byRecv == 0 || byRecv == -1) {
             // error receive data - break loop
             clientClose = true;
