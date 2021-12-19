@@ -94,8 +94,18 @@ void OneDriveMainWindow::on_pushButton_createdir_clicked()
 
 void OneDriveMainWindow::on_pushButton_delete_clicked()
 {
-    QFile fileToDel = selectedFile;
-    fileToDel.remove();
+    QFileInfo fileToDelInfo(selectedFile);
+    if (fileToDelInfo.suffix() == "")
+    {
+        QDir dirToDel = selectedFile;
+        dirToDel.removeRecursively();
+    }
+    else
+    {
+        QFile fileToDel = selectedFile;
+        fileToDel.remove();
+    }
+    
 }
 
 std::string OneDriveMainWindow::GetUserPathToFiles()
