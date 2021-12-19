@@ -17,6 +17,8 @@ public:
 private slots:
     void on_treeViewPC_clicked(QModelIndex index);
     void on_treeViewPC_doubleClicked(QModelIndex index);
+    void on_treeViewDrive_clicked(QModelIndex index);
+    void on_treeViewDrive_doubleClicked(QModelIndex index);
 private:
     std::string Username;
     std::string Path;

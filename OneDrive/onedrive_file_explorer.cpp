@@ -89,3 +89,13 @@ void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
 }
+
+void OneDriveFileExplorer::on_treeViewDrive_clicked(QModelIndex index)
+{
+    selectedFile = dirmodelDrive->fileInfo(index).absoluteFilePath();
+}
+
+void OneDriveFileExplorer::on_treeViewDrive_doubleClicked(QModelIndex index)
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
+}
