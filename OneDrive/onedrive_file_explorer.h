@@ -16,9 +16,11 @@ public:
    
 private slots:
     void on_treeViewPC_clicked(QModelIndex index);
+    void on_treeViewPC_doubleClicked(QModelIndex index);
 private:
     std::string Username;
     std::string Path;
+    QString selectedFile;
     Ui::fileExplorerUI ui;
     QFileSystemModel* dirmodel;
     QFileSystemModel* dirmodelDrive;

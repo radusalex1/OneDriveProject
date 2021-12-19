@@ -33,16 +33,17 @@ void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index)
 {
     
     QString dirPath = dirmodel->fileInfo(index).absoluteFilePath();
+    selectedFile = dirPath;
 
     QLabel* pathToFile = new QLabel(this);
     pathToFile->setText(dirPath.toStdString().c_str());
    /* qDebug()<< dirPath.toStdString().c_str();*/
-    qDebug()<< this->Path.c_str();
+    //qDebug()<< this->Path.c_str();
     std::string FileSourcePath = dirPath.toStdString();
-    qDebug() << FileSourcePath.c_str();
+    //qDebug() << FileSourcePath.c_str();
 
-    Client_Class client;
-    client.sendFiles(FileSourcePath.c_str(), this->Path);
+    //Client_Class client;
+    //client.sendFiles(FileSourcePath.c_str(), this->Path);
 
     //ui.listView->setRootIndex(filemodel->setRootPath(dirPath));
 
@@ -82,4 +83,9 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
 {
     DataBaseConnect* dbc = new DataBaseConnect();
     return dbc->GetUserPath(this->Username);
+}
+
+void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
+{
+    QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
 }
