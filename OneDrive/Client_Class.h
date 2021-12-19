@@ -11,8 +11,8 @@ class Client_Class
 public:
 	Client_Class();
 	SOCKET initializeSocket();
-	void SendUserOption(SOCKET sock,std::string);
+	/*void SendUserOption(SOCKET sock,std::string);
 	void sendFiles(std::string,std::string);
-	void getFiles(std::string,std::string);
+	void getFiles(std::string,std::string);*/
 
 };
