@@ -10,12 +10,12 @@
 #include <fstream>
 
 OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
-    : QWidget(parent)
+    : QDialog(parent)
 {
     ui.setupUi(this);
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
-    this->setWindowState(Qt::WindowMinimized);
+    //this->setWindowState(Qt::WindowMinimized);
     
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);
@@ -51,7 +51,7 @@ void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index) //here we se
 }
 
 OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent)
-    : QWidget(parent)
+    : QDialog(parent)
 {
     ui.setupUi(this);
 
@@ -60,7 +60,7 @@ OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent
 
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
-    this->setWindowState(Qt::WindowMinimized);
+    //this->setWindowState(Qt::WindowMinimized);
 
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);

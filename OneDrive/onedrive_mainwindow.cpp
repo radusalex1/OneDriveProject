@@ -35,7 +35,7 @@ void OneDriveMainWindow::on_pushButton_addfile_clicked()
     onedriveFileExplorer->setWindowFlags(Qt::Window);
     onedriveFileExplorer->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
     QObject::connect(onedriveFileExplorer, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
-    onedriveFileExplorer->show();
+    onedriveFileExplorer->open();
 }
 
 OneDriveMainWindow::OneDriveMainWindow(std::string username)

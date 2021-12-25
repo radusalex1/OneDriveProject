@@ -2,9 +2,10 @@
 #include <QtWidgets/QWidget>
 #include <QtCore>
 #include <QtGui>
+#include<QDialog>
 #include "ui_onedrive_file_explorer.h"
 
-class OneDriveFileExplorer : public QWidget
+class OneDriveFileExplorer : public QDialog
 {
     Q_OBJECT
 
