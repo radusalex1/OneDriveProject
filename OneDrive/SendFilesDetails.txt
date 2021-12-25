@@ -1,3 +1,7 @@
 2
-E:/KingdomNewLands/Kingdom.exe
-C:\Users\Mircea\Desktop\OneDriveFiles
+C:/Users/Radu/Desktop/Test/testPath.txt
+C:\Users\Radu\Desktop\ServerDocuments\
+erverDocuments\
+sktop\ServerDocuments\
+uments\
+ocuments\
