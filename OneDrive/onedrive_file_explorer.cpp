@@ -4,6 +4,10 @@
 #include <QMessageBox>
 #include <QtWidgets/qmessagebox.h>
 #include <regex>
+#include <iostream>
+#include <filesystem>
+#include <string>
+#include <fstream>
 
 OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     : QWidget(parent)
@@ -112,8 +116,7 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
     std::filesystem::path p(fileRequested);
     std::string destinationPath = DestinationPath;
 
-    do {
-
+    
         int byRecv = send(sock, p.filename().string().c_str(), FILENAME_MAX, 0); //send filename
         send(sock, destinationPath.c_str(), FILENAME_MAX, 0); //send desti path
 
@@ -126,7 +129,6 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
             // error receive data - break loop
             clientClose = true;
         }
-
         // open file
         file.open(fileRequested, std::ios::binary);
 
@@ -134,6 +136,7 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
         file.seekg(0, std::ios::end);
         long fileSize = file.tellg();
 
+        qDebug() << fileSize;
         // send filesize to client
         int bySendinfo = send(sock, (char*)&fileSize, sizeof(long), 0);
 
@@ -146,6 +149,7 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
         do {
             // read and send part file to client
             file.read(bufferFile, BUFFER_SIZE);
+            qDebug() << bufferFile;
             if (file.gcount() > 0)
                 bySendinfo = send(sock, bufferFile, file.gcount(), 0);
 
@@ -156,8 +160,6 @@ void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string Des
             }
         } while (file.gcount() > 0);
         file.close();
-
-    } while (file.is_open());
 }
 void OneDriveFileExplorer::getFiles(std::string, std::string)
 {
