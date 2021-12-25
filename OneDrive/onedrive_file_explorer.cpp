@@ -35,25 +35,18 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
 
 void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index) //here we send files
 {
-    
+
     QString dirPath = dirmodel->fileInfo(index).absoluteFilePath();
     selectedFile = dirPath;
 
     QLabel* pathToFile = new QLabel(this);
     pathToFile->setText(dirPath.toStdString().c_str());
 
-    /*qDebug()<< dirPath.toStdString().c_str();*/
-    //qDebug()<< this->Path.c_str();
-
     std::string FileSourcePath = dirPath.toStdString();
-    //qDebug() << FileSourcePath.c_str();
 
-    /*Client_Class client;
-    client.sendFiles(FileSourcePath.c_str(), this->Path);*/ //- old method
+    //sendFiles(FileSourcePath, this->Path); //-new method
 
-    sendFiles(FileSourcePath, this->Path); //-new method
-
-    //ui.listView->setRootIndex(filemodel->setRootPath(dirPath));
+    sendFiles_new_method(FileSourcePath, this->Path);
 
 }
 
@@ -91,80 +84,18 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
     DataBaseConnect* dbc = new DataBaseConnect();
     return dbc->GetUserPath(this->Username);
 }
-void OneDriveFileExplorer::SendUserOption(SOCKET sock, std::string userOptionStr)
+void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std::string Path)
 {
-    int userOption = send(sock, userOptionStr.c_str(), sizeof(int), 0);
-    if (userOption == 0 || userOption == -1) {
-        closesocket(sock);
-        WSACleanup();
-        return;
+    QString filename = "SendFilesDetails.txt";
+    QFile file(filename);
+    if (file.open(QIODevice::ReadWrite)) {
+        QTextStream stream(&file);
+        stream << 2 << "\n";
+        stream << FileSourcePath.c_str()<<"\n";
+        stream << Path.c_str()<<"\n";
     }
 }
-void OneDriveFileExplorer::sendFiles(std::string SourcePathFile, std::string DestinationPath)
-{
-    Client_Class c;
-    SOCKET sock = c.initializeSocket();
-    SendUserOption(sock, "get");
-    bool clientClose = false;
 
-    const int BUFFER_SIZE = 1024;
-    char bufferFile[BUFFER_SIZE];
-
-    std::ifstream file;
-
-    std::string fileRequested = SourcePathFile;
-    std::filesystem::path p(fileRequested);
-    std::string destinationPath = DestinationPath;
-
-    
-        int byRecv = send(sock, p.filename().string().c_str(), FILENAME_MAX, 0); //send filename
-        send(sock, destinationPath.c_str(), FILENAME_MAX, 0); //send desti path
-
-        qDebug() << sock;
-        qDebug() << byRecv;
-        qDebug() << p.filename().string().c_str();
-        qDebug() << destinationPath.c_str();
-
-        if (byRecv == 0 || byRecv == -1) {
-            // error receive data - break loop
-            clientClose = true;
-        }
-        // open file
-        file.open(fileRequested, std::ios::binary);
-
-        // get file size
-        file.seekg(0, std::ios::end);
-        long fileSize = file.tellg();
-
-        qDebug() << fileSize;
-        // send filesize to client
-        int bySendinfo = send(sock, (char*)&fileSize, sizeof(long), 0);
-
-        if (bySendinfo == 0 || bySendinfo == -1) {
-            // error sending data - break loop
-            clientClose = true;
-        }
-        file.seekg(0, std::ios::beg);
-        // read file with do-while loop
-        do {
-            // read and send part file to client
-            file.read(bufferFile, BUFFER_SIZE);
-            qDebug() << bufferFile;
-            if (file.gcount() > 0)
-                bySendinfo = send(sock, bufferFile, file.gcount(), 0);
-
-            if (bySendinfo == 0 || bySendinfo == -1) {
-                // error sending data - break loop
-                clientClose = true;
-                break;
-            }
-        } while (file.gcount() > 0);
-        file.close();
-}
-void OneDriveFileExplorer::getFiles(std::string, std::string)
-{
-
-}
 void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
