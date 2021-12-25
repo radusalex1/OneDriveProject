@@ -94,6 +94,10 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
         stream << FileSourcePath.c_str()<<"\n";
         stream << Path.c_str()<<"\n";
     }
+
+    /// client process should start here:)))
+
+
 }
 
 void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
