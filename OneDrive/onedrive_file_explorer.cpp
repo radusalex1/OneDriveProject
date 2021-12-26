@@ -9,6 +9,7 @@
 #include <string>
 #include <fstream>
 #include <QtWidgets/qcommonstyle.h>
+#include <QtWidgets/qinputdialog.h>
 
 OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     : QDialog(parent)
@@ -145,6 +146,12 @@ void OneDriveFileExplorer::on_pushButton_delete_clicked()
 
 void OneDriveFileExplorer::on_pushButton_rename_clicked()
 {
+    QString newName = QInputDialog::getText(this, "Rename file", "Enter a new name: ");
+
+    QFileInfo fileToChange(selectedFile);
+    QString extension = fileToChange.suffix();
+    QDir currentDir(this->Path.c_str());
+    currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
 void OneDriveFileExplorer::on_pushButton_createdir_clicked()
