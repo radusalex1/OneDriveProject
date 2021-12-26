@@ -8,7 +8,7 @@
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
 #pragma comment(lib, "ws2_32.lib")
-std::ifstream file_getdetails("D:\\Facultate\\FacultateAnul2\\ModernC++\\OneDriveProject\\OneDrive\\SendFilesDetails.txt");
+std::ifstream file_getdetails("E:\\Laboratoare\\ModernC++\\OneDriveProject\\OneDrive\\SendFilesDetails.txt");
 
 SOCKET initializeSocket()
 {

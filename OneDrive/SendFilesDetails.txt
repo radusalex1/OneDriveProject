@@ -1,6 +1,8 @@
 2
-C:/Users/Radu/Desktop/Test/testPath.txt
-C:\Users\Radu\Desktop\ServerDocuments\
+D:/autoexec.bat
+C:\Users\Mircea\Desktop\OneDriveFiles
+ea\Desktop\OneDriveFiles
+\
 erverDocuments\
 sktop\ServerDocuments\
 uments\
