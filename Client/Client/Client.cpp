@@ -8,7 +8,8 @@
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
 #pragma comment(lib, "ws2_32.lib")
-std::ifstream file_getdetails("E:\\Laboratoare\\ModernC++\\OneDriveProject\\OneDrive\\SendFilesDetails.txt");
+std::ifstream file_getdetails("D:\\Facultate\\FacultateAnul2\\ModernC++\\OneDriveProject\\OneDrive\\SendFilesDetails.txt");
+//std::ifstream file_getdetailsForGet("D:\\Facultate\\FacultateAnul2\\ModernC++\\OneDriveProject\\OneDrive\\GetFilesDetails.txt");
 
 SOCKET initializeSocket()
 {
@@ -91,21 +92,29 @@ void GetFiles(SOCKET sock)
 
 		int fileDownloaded = 0;
 		
-		std::string fileRequested = SourcePath();
+		std::string fileRequested;
+		std::getline(file_getdetails, fileRequested);
 
 		std::filesystem::path p(fileRequested);
 		std::string fileName = p.filename().string();
-		std::string Path = DestinationPath() + fileName;
 
+		std::string destinationPath;
+		std::getline(file_getdetails, destinationPath);
+		std::string Path = destinationPath + fileName;
+		sleep_for(nanoseconds(10000));
 		//std::cin.getline(fileRequested, FILENAME_MAX);
-	
-		int byRecv = send(sock, fileRequested.c_str(), FILENAME_MAX, 0);
-		if (byRecv == 0 || byRecv == -1) {
-			sock = true;
-			return;
-		}
-
 		
+		
+
+
+			int byRecv = send(sock, fileRequested.c_str(), FILENAME_MAX, 0);
+			if (byRecv == 0 || byRecv == -1) {
+				clientClose = true;
+				sock = true;
+				return;
+			}
+
+
 			byRecv = recv(sock, (char*)&fileRequestedsize, sizeof(long), 0);
 			if (byRecv == 0 || byRecv == -1) {
 				clientClose = true;
@@ -127,9 +136,9 @@ void GetFiles(SOCKET sock)
 				file.write(bufferFile, byRecv);
 				fileDownloaded += byRecv;
 			} while (fileDownloaded < fileRequestedsize);
+			
 			file.close();
-		
-		
+
 }
 void SendFiles(SOCKET sock)
 {
@@ -148,6 +157,7 @@ void SendFiles(SOCKET sock)
 	std::cerr << fileRequested << "\n";
 	std::cerr << destinationPath << "\n";
 	sleep_for(nanoseconds(5000));
+
 	do {
 
 		int byRecv = send(sock, p.filename().string().c_str(), FILENAME_MAX, 0); //send filename

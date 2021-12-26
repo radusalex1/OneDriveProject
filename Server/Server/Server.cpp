@@ -77,7 +77,7 @@ void SendFiles(SOCKET clientSock)
 	char bufferFile[BUFFER_SIZE];
 	std::ifstream file;
 
-	do {
+	
 		memset(fileRequested, 0, FILENAME_MAX);
 		int byRecv = recv(clientSock, fileRequested, FILENAME_MAX, 0);
 
@@ -116,14 +116,11 @@ void SendFiles(SOCKET clientSock)
 					break;
 				}
 			} while (file.gcount() > 0);
+
 			file.close();
+			
 		}
-		else {
 
-			clientClose = true;
-
-		}
-	} while (!clientClose);
 }
 void GetFiles(SOCKET clientSock)
 {
@@ -184,6 +181,7 @@ int main() {
 		{
 			GetFiles(clientSock);
 		}
+
 	}
 	return 0;
 }

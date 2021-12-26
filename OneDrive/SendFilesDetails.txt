@@ -1,9 +1,5 @@
 2
-E:/GTAV/d3dcompiler_46.dll
-C:\Users\Mircea\Desktop\OneDriveFiles
-OneDriveFiles
-\
-erverDocuments\
-sktop\ServerDocuments\
-uments\
-ocuments\
+D:/Eseuri CT.pdf
+C:\Users\Radu\Desktop\ServerDocuments\
+acultate
+omana/eseuri_romana/

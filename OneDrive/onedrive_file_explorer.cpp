@@ -10,6 +10,9 @@
 #include <fstream>
 #include <QtWidgets/qcommonstyle.h>
 #include <QtWidgets/qinputdialog.h>
+#include <QFileDialog>
+
+QString filename = "SendFilesDetails.txt";
 
 OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     : QDialog(parent)
@@ -94,8 +97,9 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
 }
 void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std::string Path)
 {
-    QString filename = "SendFilesDetails.txt";
+    
     QFile file(filename);
+
     if (file.open(QIODevice::ReadWrite)) {
         QTextStream stream(&file);
         stream << 2 << "\n";
@@ -111,6 +115,23 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
 
 }
 
+void OneDriveFileExplorer::getFiles_new_method(std::string destinationPath)
+{ 
+    QFile file(filename);
+
+    if (file.open(QIODevice::ReadWrite)) {
+        QTextStream stream(&file);
+        stream << 1 << "\n";
+        stream << selectedFile.toStdString().c_str() << "\n";
+        stream << destinationPath.c_str() << "\n";
+    }
+    
+   QProcess process;
+    QFile file1 = "..\\Client\\x64\\Release\\Client.exe";
+    process.startDetached(file1.fileName());
+
+}
+
 void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
@@ -118,6 +139,8 @@ void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 void OneDriveFileExplorer::on_treeViewDrive_clicked(QModelIndex index)
 {
     selectedFile = dirmodelDrive->fileInfo(index).absoluteFilePath();
+    /// pus in fisier GEtFiles_details.txt
+    /// +calea pe car eo selecteaza userul cnad apasa pe buton.
 }
 void OneDriveFileExplorer::on_treeViewDrive_doubleClicked(QModelIndex index)
 {
@@ -138,7 +161,13 @@ void OneDriveFileExplorer::on_pushButton_LR_clicked()
 
 void OneDriveFileExplorer::on_pushButton_RL_clicked()
 {
-    
+
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home", QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
+    qDebug() << dir;
+    getFiles_new_method(dir.toStdString());
+    //get files;
+    //get files method;
+    // aici apare popup si ia calea in get files method;
 }
 
 void OneDriveFileExplorer::on_pushButton_delete_clicked()
@@ -162,12 +191,12 @@ void OneDriveFileExplorer::on_pushButton_rename_clicked()
 
     QFileInfo fileToChange(selectedFile);
     QString extension = fileToChange.suffix();
-    QDir currentDir(this->Path.c_str());
+    QDir currentDir(this->Path.c_str()); /// fix bug!
     currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
 void OneDriveFileExplorer::on_pushButton_createdir_clicked()
 {
     QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
-    QDir(this->Path.c_str()).mkdir(newName);
+    QDir(this->Path.c_str()).mkdir(newName); /// fix bug!
 }
