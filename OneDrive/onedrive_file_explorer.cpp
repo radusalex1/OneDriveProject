@@ -8,6 +8,7 @@
 #include <filesystem>
 #include <string>
 #include <fstream>
+#include <QtWidgets/qcommonstyle.h>
 
 OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     : QDialog(parent)
@@ -15,6 +16,9 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     ui.setupUi(this);
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+    QCommonStyle style;
+    ui.pushButton_LR->setIcon(style.standardIcon(QStyle::SP_ArrowRight));
+    ui.pushButton_RL->setIcon(style.standardIcon(QStyle::SP_ArrowLeft));
     //this->setWindowState(Qt::WindowMinimized);
     
     QString dirPath = "C:/";
@@ -35,19 +39,7 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
 
 void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index) //here we send files
 {
-
-    QString dirPath = dirmodel->fileInfo(index).absoluteFilePath();
-    selectedFile = dirPath;
-
-    QLabel* pathToFile = new QLabel(this);
-    pathToFile->setText(dirPath.toStdString().c_str());
-
-    std::string FileSourcePath = dirPath.toStdString();
-
-    //sendFiles(FileSourcePath, this->Path); //-new method
-
-    sendFiles_new_method(FileSourcePath, this->Path);
-
+    selectedFile = dirmodel->fileInfo(index).absoluteFilePath();
 }
 
 OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent)
@@ -61,6 +53,9 @@ OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
     //this->setWindowState(Qt::WindowMinimized);
+    QCommonStyle style;
+    ui.pushButton_LR->setIcon(style.standardIcon(QStyle::SP_ArrowRight));
+    ui.pushButton_RL->setIcon(style.standardIcon(QStyle::SP_ArrowLeft));
 
     QString dirPath = "C:/";
     dirmodel = new QFileSystemModel(this);
@@ -114,4 +109,21 @@ void OneDriveFileExplorer::on_treeViewDrive_clicked(QModelIndex index)
 void OneDriveFileExplorer::on_treeViewDrive_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
+}
+
+void OneDriveFileExplorer::on_pushButton_LR_clicked() 
+{
+    QLabel* pathToFile = new QLabel(this);
+    pathToFile->setText(selectedFile.toStdString().c_str());
+
+    std::string FileSourcePath = selectedFile.toStdString();
+
+    //sendFiles(FileSourcePath, this->Path); //-new method
+
+    sendFiles_new_method(FileSourcePath, this->Path);
+}
+
+void OneDriveFileExplorer::on_pushButton_RL_clicked()
+{
+    
 }

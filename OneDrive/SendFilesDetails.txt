@@ -1,7 +1,7 @@
 2
-D:/autoexec.bat
+E:/GTAV/d3dcompiler_46.dll
 C:\Users\Mircea\Desktop\OneDriveFiles
-ea\Desktop\OneDriveFiles
+OneDriveFiles
 \
 erverDocuments\
 sktop\ServerDocuments\

@@ -29,8 +29,8 @@ public:
     QPushButton *pushButton_delete;
     QPushButton *pushButton_rename;
     QPushButton *pushButton_createdir;
-    QPushButton *pushButton__RL;
     QPushButton *pushButton_LR;
+    QPushButton *pushButton_RL;
 
     void setupUi(QWidget *Form)
     {
@@ -58,12 +58,12 @@ public:
         pushButton_createdir = new QPushButton(Form);
         pushButton_createdir->setObjectName(QString::fromUtf8("pushButton_createdir"));
         pushButton_createdir->setGeometry(QRect(520, 450, 91, 24));
-        pushButton__RL = new QPushButton(Form);
-        pushButton__RL->setObjectName(QString::fromUtf8("pushButton__RL"));
-        pushButton__RL->setGeometry(QRect(400, 170, 151, 24));
         pushButton_LR = new QPushButton(Form);
         pushButton_LR->setObjectName(QString::fromUtf8("pushButton_LR"));
-        pushButton_LR->setGeometry(QRect(400, 250, 151, 24));
+        pushButton_LR->setGeometry(QRect(400, 170, 151, 24));
+        pushButton_RL = new QPushButton(Form);
+        pushButton_RL->setObjectName(QString::fromUtf8("pushButton_RL"));
+        pushButton_RL->setGeometry(QRect(400, 250, 151, 24));
 
         retranslateUi(Form);
 
@@ -78,8 +78,8 @@ public:
         pushButton_delete->setText(QCoreApplication::translate("Form", "Delete file", nullptr));
         pushButton_rename->setText(QCoreApplication::translate("Form", "Rename file", nullptr));
         pushButton_createdir->setText(QCoreApplication::translate("Form", "Create directory", nullptr));
-        pushButton__RL->setText(QString());
         pushButton_LR->setText(QString());
+        pushButton_RL->setText(QString());
     } // retranslateUi
 
 };
