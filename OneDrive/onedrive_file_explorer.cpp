@@ -127,3 +127,26 @@ void OneDriveFileExplorer::on_pushButton_RL_clicked()
 {
     
 }
+
+void OneDriveFileExplorer::on_pushButton_delete_clicked()
+{
+    QFileInfo fileToDelInfo(selectedFile);
+    if (fileToDelInfo.suffix() == "")
+    {
+        QDir dirToDel = selectedFile;
+        dirToDel.removeRecursively();
+    }
+    else
+    {
+        QFile fileToDel = selectedFile;
+        fileToDel.remove();
+    }
+}
+
+void OneDriveFileExplorer::on_pushButton_rename_clicked()
+{
+}
+
+void OneDriveFileExplorer::on_pushButton_createdir_clicked()
+{
+}

@@ -21,6 +21,9 @@ private slots:
     void on_treeViewDrive_doubleClicked(QModelIndex index);
     void on_pushButton_LR_clicked();
     void on_pushButton_RL_clicked();
+    void on_pushButton_delete_clicked();
+    void on_pushButton_rename_clicked();
+    void on_pushButton_createdir_clicked();
 
 private:
     std::string Username;
