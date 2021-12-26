@@ -16,6 +16,12 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
 {
     ui.setupUi(this);
 
+    QPixmap background("BackgroundLoginImg.jpg");
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, background);
+    this->setPalette(palette);
+
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
     QCommonStyle style;
     ui.pushButton_LR->setIcon(style.standardIcon(QStyle::SP_ArrowRight));
@@ -47,6 +53,12 @@ OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent
     : QDialog(parent)
 {
     ui.setupUi(this);
+
+    QPixmap background("BackgroundLoginImg.jpg");
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette palette;
+    palette.setBrush(QPalette::Window, background);
+    this->setPalette(palette);
 
     this->Username = username;
     this->Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere.
