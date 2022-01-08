@@ -167,12 +167,11 @@ void GetFiles(SOCKET clientSock)
 }
 int main() {
 
-	while (true)
-	{
 		SOCKET clientSock = initializeSocket();
-		// sending welcome message
+
 		std::string userInput = ReceiveOption(clientSock);
 		std::cerr << userInput << "\n";
+
 		if (userInput == "send")
 		{
 			SendFiles(clientSock);
@@ -182,6 +181,6 @@ int main() {
 			GetFiles(clientSock);
 		}
 
-	}
+	
 	return 0;
 }

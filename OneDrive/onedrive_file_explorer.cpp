@@ -99,7 +99,7 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
 {
     
     QFile file(filename);
-
+    file.resize(0);
     if (file.open(QIODevice::ReadWrite)) {
         QTextStream stream(&file);
         stream << 2 << "\n";
@@ -107,12 +107,23 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
         stream << Path.c_str()<<"\n";
     }
 
+    
     file.close();
+
+
+
+    //method here1
+    QProcess ServerProcess;
+    QString serverPath = "..\\Server\\x64\\Debug\\Server.exe";
+    QFile fileServer = serverPath;
+    ServerProcess.startDetached(fileServer.fileName());
+
+
 
 
     //method here
     QProcess process;
-    QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
+    QString clientPath = "..\\Client\\x64\\Debug\\Client.exe";
     QFile file1 = clientPath;
     process.startDetached(file1.fileName());
  
@@ -129,12 +140,20 @@ void OneDriveFileExplorer::getFiles_new_method(std::string destinationPath)
         stream << selectedFile.toStdString().c_str() << "\n";
         stream << destinationPath.c_str() << "\n";
     }
+
+
+    //method here1
+    QProcess ServerProcess;
+    QString serverPath = "..\\Server\\x64\\Release\\Server.exe";
+    QFile fileServer = serverPath;
+    ServerProcess.startDetached(fileServer.fileName());
     
+
     //same method here
    QProcess process;
    QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
    QFile file1 = clientPath;
-    process.startDetached(file1.fileName());
+   process.startDetached(file1.fileName());
 
 }
 
@@ -158,8 +177,6 @@ void OneDriveFileExplorer::on_pushButton_LR_clicked()
     pathToFile->setText(selectedFile.toStdString().c_str());
 
     std::string FileSourcePath = selectedFile.toStdString();
-
-    //sendFiles(FileSourcePath, this->Path); //-new method
 
     sendFiles_new_method(FileSourcePath, this->Path);
 }
