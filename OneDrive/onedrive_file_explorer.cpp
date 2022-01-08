@@ -194,7 +194,7 @@ void OneDriveFileExplorer::on_pushButton_rename_clicked()
 
     QFileInfo fileToChange(selectedFile);
     QString extension = fileToChange.suffix();
-    QDir currentDir(this->Path.c_str()); /// fix bug! -doesnt take path.
+    QDir currentDir(fileToChange.absoluteDir());  /// fix bug! -doesnt take path.
     currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
