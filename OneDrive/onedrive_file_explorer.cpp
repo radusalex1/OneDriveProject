@@ -109,12 +109,13 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
 
     file.close();
 
-    /// client process should start here:)))
+
+    //method here
     QProcess process;
     QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
     QFile file1 = clientPath;
     process.startDetached(file1.fileName());
-    //process.waitForFinished();
+ 
 
 }
 
@@ -129,6 +130,7 @@ void OneDriveFileExplorer::getFiles_new_method(std::string destinationPath)
         stream << destinationPath.c_str() << "\n";
     }
     
+    //same method here
    QProcess process;
    QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
    QFile file1 = clientPath;
@@ -143,8 +145,7 @@ void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 void OneDriveFileExplorer::on_treeViewDrive_clicked(QModelIndex index)
 {
     selectedFile = dirmodelDrive->fileInfo(index).absoluteFilePath();
-    /// pus in fisier GEtFiles_details.txt
-    /// +calea pe car eo selecteaza userul cnad apasa pe buton.
+
 }
 void OneDriveFileExplorer::on_treeViewDrive_doubleClicked(QModelIndex index)
 {
@@ -169,9 +170,7 @@ void OneDriveFileExplorer::on_pushButton_RL_clicked()
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home", QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
     qDebug() << dir;
     getFiles_new_method(dir.toStdString());
-    //get files;
-    //get files method;
-    // aici apare popup si ia calea in get files method;
+    
 }
 
 void OneDriveFileExplorer::on_pushButton_delete_clicked()
@@ -195,12 +194,12 @@ void OneDriveFileExplorer::on_pushButton_rename_clicked()
 
     QFileInfo fileToChange(selectedFile);
     QString extension = fileToChange.suffix();
-    QDir currentDir(this->Path.c_str()); /// fix bug!
+    QDir currentDir(this->Path.c_str()); /// fix bug! -doesnt take path.
     currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
 void OneDriveFileExplorer::on_pushButton_createdir_clicked()
 {
     QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
-    QDir(this->Path.c_str()).mkdir(newName); /// fix bug!
+    QDir(this->Path.c_str()).mkdir(newName); /// fix bug! - doesnt take path.
 }
