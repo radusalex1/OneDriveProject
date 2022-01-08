@@ -88,7 +88,6 @@ void GetFiles(SOCKET sock)
 
 	const int BUFFER_SIZE = 1024;
 	char bufferFile[BUFFER_SIZE];
-	//char fileRequested[FILENAME_MAX];
 
 		int fileDownloaded = 0;
 		
@@ -102,7 +101,6 @@ void GetFiles(SOCKET sock)
 		std::getline(file_getdetails, destinationPath);
 		std::string Path = destinationPath + fileName;
 		sleep_for(nanoseconds(10000));
-		//std::cin.getline(fileRequested, FILENAME_MAX);
 		
 		
 
@@ -154,8 +152,7 @@ void SendFiles(SOCKET sock)
 	std::filesystem::path p(fileRequested);
 	std::string destinationPath;
 	std::getline(file_getdetails, destinationPath);
-	std::cerr << fileRequested << "\n";
-	std::cerr << destinationPath << "\n";
+	
 	sleep_for(nanoseconds(5000));
 
 	do {

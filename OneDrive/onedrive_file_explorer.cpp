@@ -107,6 +107,8 @@ void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std:
         stream << Path.c_str()<<"\n";
     }
 
+    file.close();
+
     /// client process should start here:)))
     QProcess process;
     QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
