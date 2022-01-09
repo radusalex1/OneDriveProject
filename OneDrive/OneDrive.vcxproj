@@ -124,11 +124,9 @@
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="DataBaseConnect.cpp" />
-    <ClCompile Include="folder.cpp" />
     <ClCompile Include="onedrive_file_explorer.cpp" />
     <ClCompile Include="onedrive_mainwindow.cpp" />
     <ClCompile Include="onedrive_register.cpp" />
-    <ClCompile Include="user.cpp" />
     <QtRcc Include="onedrive.qrc" />
     <QtUic Include="onedrive.ui" />
     <QtMoc Include="onedrive.h" />
@@ -144,8 +142,6 @@
     <ClInclude Include="DataBaseConnect.h" />
     <QtMoc Include="onedrive_mainwindow.h" />
     <QtMoc Include="onedrive_file_explorer.h" />
-    <ClInclude Include="folder.h" />
-    <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="BackgroundLoginImg.jpg" />

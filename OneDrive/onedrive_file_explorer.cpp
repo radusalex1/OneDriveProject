@@ -218,5 +218,8 @@ void OneDriveFileExplorer::on_pushButton_rename_clicked()
 void OneDriveFileExplorer::on_pushButton_createdir_clicked()
 {
     QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
-    QDir(this->Path.c_str()).mkdir(newName); /// fix bug! - doesnt take path.
+
+    QFileInfo fileToChange(selectedFile);
+    QDir currentDir(fileToChange.absoluteDir());  /// fix bug! -doesnt take path.
+    QDir(currentDir).mkdir(newName); /// fix bug! - doesnt take path.
 }
