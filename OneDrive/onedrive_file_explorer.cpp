@@ -115,10 +115,7 @@ void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::s
     //method here1
 
     //method here
-    QProcess process;
-    QString clientPath = "..\\Client\\x64\\Debug\\Client.exe";
-    QFile file1 = clientPath;
-    process.startDetached(file1.fileName());
+ 
  
 
 }
@@ -139,11 +136,7 @@ void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
     
 
     //same method here
-   QProcess process;
-   QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
-   QFile file1 = clientPath;
-   process.startDetached(file1.fileName());
-
+  
 }
 
 void OneDriveFileExplorer::ServerProcess()
@@ -152,6 +145,14 @@ void OneDriveFileExplorer::ServerProcess()
     QString serverPath = "..\\Server\\x64\\Debug\\Server.exe";
     QFile fileServer = serverPath;
     ServerProcess.startDetached(fileServer.fileName());
+}
+
+void OneDriveFileExplorer::ClientProcess()
+{
+    QProcess process;
+    QString clientPath = "..\\Client\\x64\\Release\\Client.exe";
+    QFile file1 = clientPath;
+    process.startDetached(file1.fileName());
 }
 
 void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)

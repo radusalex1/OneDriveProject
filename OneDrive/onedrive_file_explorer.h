@@ -16,6 +16,7 @@ public:
     void SendFilesNewMethod(std::string, std::string);
     void GetFilesNewMethod(std::string);
     void ServerProcess();
+    void ClientProcess();
 
 private slots:
     void on_treeViewPC_clicked(QModelIndex index);
