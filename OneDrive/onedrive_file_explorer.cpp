@@ -90,6 +90,11 @@ OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent
 
     
 }
+OneDriveFileExplorer::~OneDriveFileExplorer()
+{
+    delete[] dirmodel;
+    delete[] dirmodelDrive;
+}
 std::string OneDriveFileExplorer::GetUserPathToFiles()
 {
     DataBaseConnect* dbc = new DataBaseConnect();

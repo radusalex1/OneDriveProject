@@ -12,6 +12,7 @@ class OneDriveFileExplorer : public QDialog
 public:
     OneDriveFileExplorer(QWidget* parent = Q_NULLPTR);
     OneDriveFileExplorer(std::string username, QWidget* parent = Q_NULLPTR);
+    ~OneDriveFileExplorer();
     std::string GetUserPathToFiles();
     void SendFilesNewMethod(std::string, std::string);
     void GetFilesNewMethod(std::string);
