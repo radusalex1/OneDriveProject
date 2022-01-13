@@ -13,7 +13,7 @@ public:
     OneDriveFileExplorer(QWidget* parent = Q_NULLPTR);
     OneDriveFileExplorer(std::string username, QWidget* parent = Q_NULLPTR);
     std::string GetUserPathToFiles();
-    void sendFiles_new_method(std::string, std::string);
+    void SendFilesNewMethod(std::string, std::string);
     void getFiles_new_method(std::string);
 
 private slots:

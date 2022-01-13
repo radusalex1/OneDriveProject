@@ -95,7 +95,7 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
     DataBaseConnect* dbc = new DataBaseConnect();
     return dbc->GetUserPath(this->Username);
 }
-void OneDriveFileExplorer::sendFiles_new_method(std::string FileSourcePath, std::string Path)
+void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::string Path)
 {
     
     QFile file(filename);
@@ -178,7 +178,7 @@ void OneDriveFileExplorer::on_pushButton_LR_clicked()
 
     std::string FileSourcePath = selectedFile.toStdString();
 
-    sendFiles_new_method(FileSourcePath, this->Path);
+    SendFilesNewMethod(FileSourcePath, this->Path);
 }
 
 void OneDriveFileExplorer::on_pushButton_RL_clicked()
