@@ -7,7 +7,7 @@
 
 OneDriveRegister::OneDriveRegister()
 {
-   ui.setupUi(this);
+    m_ui.setupUi(this);
    
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -16,9 +16,9 @@ OneDriveRegister::OneDriveRegister()
     this->setPalette(palette);
 
     QPixmap folderpic("Logo.png");
-    int width = ui.label_pic->width();
-    int height = ui.label_pic->height();
-    ui.label_pic->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
+    int width = m_ui.label_pic->width();
+    int height = m_ui.label_pic->height();
+    m_ui.label_pic->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon.
 }
@@ -27,8 +27,8 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
 {
     
 
-    std::string newUserUsername = ui.line_username->text().toStdString();
-    std::string newUserPassword = ui.line_password->text().toStdString();
+    std::string newUserUsername = m_ui.line_username->text().toStdString();
+    std::string newUserPassword = m_ui.line_password->text().toStdString();
     DataBaseConnect* dbc = new DataBaseConnect();
 
     if (dbc->isUser(newUserUsername, newUserPassword))
