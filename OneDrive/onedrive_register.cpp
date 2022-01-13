@@ -16,8 +16,8 @@ OneDriveRegister::OneDriveRegister()
     this->setPalette(palette);
 
     QPixmap folderpic("Logo.png");
-    int width = m_ui.label_pic->width();
-    int height = m_ui.label_pic->height();
+    uint16_t width = m_ui.label_pic->width();
+    uint16_t height = m_ui.label_pic->height();
     m_ui.label_pic->setPixmap(folderpic.scaled(width, height, Qt::KeepAspectRatio));
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon.
