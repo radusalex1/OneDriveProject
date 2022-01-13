@@ -124,12 +124,9 @@ void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
         stream << destinationPath.c_str() << "\n";
     }
 
-
     ServerProcess();
     
-
-    //same method here
-  
+    ClientProcess();
 }
 
 void OneDriveFileExplorer::ServerProcess()
