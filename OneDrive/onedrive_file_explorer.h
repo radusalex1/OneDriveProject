@@ -15,6 +15,7 @@ public:
     std::string GetUserPathToFiles();
     void SendFilesNewMethod(std::string, std::string);
     void GetFilesNewMethod(std::string);
+    void ServerProcess();
 
 private slots:
     void on_treeViewPC_clicked(QModelIndex index);
