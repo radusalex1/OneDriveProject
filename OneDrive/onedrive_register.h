@@ -14,7 +14,7 @@ private slots:
     void on_pushButton_GoBack_clicked();
 
 private:
-    Ui::registerUI ui;
+    Ui::registerUI m_ui;
     
     
 };
