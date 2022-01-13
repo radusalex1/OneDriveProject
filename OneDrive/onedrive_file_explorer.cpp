@@ -110,14 +110,9 @@ void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::s
     
     file.close();
 
-
-
-    //method here1
+    ServerProcess();
 
     //method here
- 
- 
-
 }
 
 void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
