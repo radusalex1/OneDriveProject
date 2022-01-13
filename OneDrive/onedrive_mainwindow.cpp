@@ -66,6 +66,11 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 
 }
 
+OneDriveMainWindow::~OneDriveMainWindow()
+{
+    delete[] dirmodel;
+}
+
 void OneDriveMainWindow::on_treeView_clicked(QModelIndex index)
 {
     selectedFile = dirmodel->fileInfo(index).absoluteFilePath();

@@ -13,6 +13,7 @@ public:
 
     OneDriveMainWindow();
     OneDriveMainWindow(std::string username);
+    ~OneDriveMainWindow();
 
 private slots:
     void on_pushButton_addfile_clicked();
