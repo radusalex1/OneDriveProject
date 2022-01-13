@@ -49,6 +49,11 @@ void OneDrive::on_pushButton_login_clicked()
     }
 }
 
+OneDrive::~OneDrive()
+{
+    delete[] onedriveRegister;
+}
+
 void OneDrive::on_pushButton_register_clicked()
 {
     this->hide();

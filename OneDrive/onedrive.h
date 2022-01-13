@@ -12,6 +12,7 @@ public:
 
     OneDrive(QWidget *parent = Q_NULLPTR);
     //OneDrive();
+    ~OneDrive();
 
 private slots:
 
