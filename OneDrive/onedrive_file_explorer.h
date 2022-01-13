@@ -31,10 +31,10 @@ private slots:
     void on_pushButton_createdir_clicked();
 
 private:
-    std::string Username;
-    std::string Path;
-    QString selectedFile;
-    Ui::fileExplorerUI ui;
-    QFileSystemModel* dirmodel;
-    QFileSystemModel* dirmodelDrive;
+    std::string m_Username;
+    std::string m_Path;
+    QString m_selectedFile;
+    Ui::fileExplorerUI m_ui;
+    QFileSystemModel* m_dirmodel;
+    QFileSystemModel* m_dirmodelDrive;
 };
