@@ -20,6 +20,6 @@ private slots:
     void on_pushButton_register_clicked();
 
 private:
-    Ui::OneDriveClass ui;
-    OneDriveRegister* onedriveRegister;
+    Ui::OneDriveClass m_ui;
+    OneDriveRegister* m_onedriveRegister;
 };
