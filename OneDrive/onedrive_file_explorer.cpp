@@ -97,7 +97,6 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
 }
 void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::string Path)
 {
-    
     QFile file(filename);
     file.resize(0);
     if (file.open(QIODevice::ReadWrite)) {
@@ -106,13 +105,12 @@ void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::s
         stream << FileSourcePath.c_str()<<"\n";
         stream << Path.c_str()<<"\n";
     }
-
     
     file.close();
 
     ServerProcess();
 
-    //method here
+    ClientProcess();
 }
 
 void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
