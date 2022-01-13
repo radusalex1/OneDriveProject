@@ -130,7 +130,7 @@ void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::s
 
 }
 
-void OneDriveFileExplorer::getFiles_new_method(std::string destinationPath)
+void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
 { 
     QFile file(filename);
 
@@ -186,7 +186,7 @@ void OneDriveFileExplorer::on_pushButton_RL_clicked()
 
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home", QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
     qDebug() << dir;
-    getFiles_new_method(dir.toStdString());
+    GetFilesNewMethod(dir.toStdString());
     
 }
 
