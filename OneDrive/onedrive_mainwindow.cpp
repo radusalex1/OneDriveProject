@@ -9,7 +9,7 @@
 
 OneDriveMainWindow::OneDriveMainWindow()
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
 
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -20,17 +20,17 @@ OneDriveMainWindow::OneDriveMainWindow()
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
 
     QString dirPath = "C:/";
-    dirmodel = new QFileSystemModel(this);
-    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
-    dirmodel->setRootPath(dirPath);
+    m_dirmodel = new QFileSystemModel(this);
+    m_dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    m_dirmodel->setRootPath(dirPath);
 
-    ui.treeView->setModel(dirmodel);
+    m_ui.treeView->setModel(m_dirmodel);
 
 }
 
 void OneDriveMainWindow::on_pushButton_addfile_clicked()
 {
-    OneDriveFileExplorer* onedriveFileExplorer = new OneDriveFileExplorer(this->Username, this);
+    OneDriveFileExplorer* onedriveFileExplorer = new OneDriveFileExplorer(this->m_Username, this);
     onedriveFileExplorer->setWindowTitle("OneDrive - File Explorer");
     onedriveFileExplorer->setWindowFlags(Qt::Window);
     onedriveFileExplorer->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
@@ -40,10 +40,10 @@ void OneDriveMainWindow::on_pushButton_addfile_clicked()
 
 OneDriveMainWindow::OneDriveMainWindow(std::string username)
 {
-    ui.setupUi(this);
+    m_ui.setupUi(this);
 
-    this->Username = username;
-    this->Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere. -working
+    this->m_Username = username;
+    this->m_Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere. -working
 
     QPixmap background("BackgroundLoginImg.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
@@ -53,61 +53,61 @@ OneDriveMainWindow::OneDriveMainWindow(std::string username)
 
     this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
 
-    QString dirPath = this->Path.c_str(); ///  aici ii dau calea catre directorul care trebuie afisat - working
-    dirmodel = new QFileSystemModel(this);
-    dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
-    dirmodel->setRootPath(dirPath);
-    ui.treeView->setModel(dirmodel);
-    ui.treeView->setRootIndex(dirmodel->index(dirPath));
+    QString dirPath = this->m_Path.c_str(); ///  aici ii dau calea catre directorul care trebuie afisat - working
+    m_dirmodel = new QFileSystemModel(this);
+    m_dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
+    m_dirmodel->setRootPath(dirPath);
+    m_ui.treeView->setModel(m_dirmodel);
+    m_ui.treeView->setRootIndex(m_dirmodel->index(dirPath));
 
     QLabel *welcomeLabel = new QLabel(this);
-    std::string WelcomeMessage ="            Welcome back: " + this->Username + " --- "+this->Path;
+    std::string WelcomeMessage ="            Welcome back: " + this->m_Username + " --- "+this->m_Path;
     welcomeLabel->setText(WelcomeMessage.c_str());
 
 }
 
 OneDriveMainWindow::~OneDriveMainWindow()
 {
-    delete[] dirmodel;
+    delete[] m_dirmodel;
 }
 
 void OneDriveMainWindow::on_treeView_clicked(QModelIndex index)
 {
-    selectedFile = dirmodel->fileInfo(index).absoluteFilePath();
+    m_selectedFile = m_dirmodel->fileInfo(index).absoluteFilePath();
 }
 
 void OneDriveMainWindow::on_treeView_doubleClicked(QModelIndex index)
 {
-    QDesktopServices::openUrl(QUrl::fromLocalFile(selectedFile));
+    QDesktopServices::openUrl(QUrl::fromLocalFile(m_selectedFile));
 }
 
 void OneDriveMainWindow::on_pushButton_rename_clicked()
 {
     QString newName = QInputDialog::getText(this, "Rename file", "Enter a new name: ");
 
-    QFileInfo fileToChange(selectedFile);
+    QFileInfo fileToChange(m_selectedFile);
     QString extension = fileToChange.suffix();
-    QDir currentDir(this->Path.c_str());
+    QDir currentDir(this->m_Path.c_str());
     currentDir.rename(fileToChange.absoluteFilePath(), newName + '.' + extension);
 }
 
 void OneDriveMainWindow::on_pushButton_createdir_clicked()
 {
     QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
-    QDir(this->Path.c_str()).mkdir(newName);
+    QDir(this->m_Path.c_str()).mkdir(newName);
 }
 
 void OneDriveMainWindow::on_pushButton_delete_clicked()
 {
-    QFileInfo fileToDelInfo(selectedFile);
+    QFileInfo fileToDelInfo(m_selectedFile);
     if (fileToDelInfo.suffix() == "")
     {
-        QDir dirToDel = selectedFile;
+        QDir dirToDel = m_selectedFile;
         dirToDel.removeRecursively();
     }
     else
     {
-        QFile fileToDel = selectedFile;
+        QFile fileToDel = m_selectedFile;
         fileToDel.remove();
     }
     
@@ -116,5 +116,5 @@ void OneDriveMainWindow::on_pushButton_delete_clicked()
 std::string OneDriveMainWindow::GetUserPathToFiles()
 {
     DataBaseConnect* dbc = new DataBaseConnect();
-    return dbc->GetUserPath(this->Username);
+    return dbc->GetUserPath(this->m_Username);
 }
