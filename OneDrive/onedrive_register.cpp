@@ -36,9 +36,13 @@ void OneDriveRegister::on_pushButton_registerMethod_clicked()
     {
         QMessageBox::warning(this, "Register", "Username already exists!");
     }
+    else if (m_path == "")
+    {
+        QMessageBox::warning(this, "Register", "Path not selected!");
+    }
     else
     {
-        dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword);
+        dbc->newUSerRegisterCredentials(newUserUsername, newUserPassword, m_path.toStdString());
         this->hide();
         OneDrive* onedriveLogin = new OneDrive(this);
         onedriveLogin->setWindowTitle("OneDrive - Login");
