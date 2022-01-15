@@ -41,7 +41,7 @@ void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::stri
 
         pqxx::work worker(connectionobject);
                                                                                  
-        std::string q3 = "INSERT INTO public.users(username, password) VALUES ('" + username + "','" + password + "','" + path + "');";
+        std::string q3 = "INSERT INTO public.users(username, password, path) VALUES ('" + username + "','" + password + "','" + path + "');";
         worker.exec(q3);
         worker.commit();
         //connectionobject.close();
