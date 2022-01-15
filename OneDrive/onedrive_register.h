@@ -15,6 +15,6 @@ private slots:
 
 private:
     Ui::registerUI m_ui;
-    
+    QString m_path;
     
 };
