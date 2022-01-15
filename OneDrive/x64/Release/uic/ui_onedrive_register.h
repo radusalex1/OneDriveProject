@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form_Register
+class Ui_Form
 {
 public:
     QGroupBox *groupBox;
@@ -33,6 +33,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QLineEdit *line_password;
+    QPushButton *pushButton_ChoosePath;
     QPushButton *pushButton_registerMethod;
     QPushButton *pushButton_GoBack;
     QLabel *label_pic;
@@ -83,6 +84,11 @@ public:
 
         verticalLayout_2->addLayout(verticalLayout);
 
+        pushButton_ChoosePath = new QPushButton(groupBox);
+        pushButton_ChoosePath->setObjectName(QString::fromUtf8("pushButton_ChoosePath"));
+
+        verticalLayout_2->addWidget(pushButton_ChoosePath);
+
         pushButton_registerMethod = new QPushButton(groupBox);
         pushButton_registerMethod->setObjectName(QString::fromUtf8("pushButton_registerMethod"));
 
@@ -108,6 +114,7 @@ public:
         groupBox->setTitle(QCoreApplication::translate("Form", "Register", nullptr));
         label->setText(QCoreApplication::translate("Form", "Username", nullptr));
         label_2->setText(QCoreApplication::translate("Form", "Password", nullptr));
+        pushButton_ChoosePath->setText(QCoreApplication::translate("Form", "Choose path", nullptr));
         pushButton_registerMethod->setText(QCoreApplication::translate("Form", "Register", nullptr));
         pushButton_GoBack->setText(QCoreApplication::translate("Form", "Return to login", nullptr));
         label_pic->setText(QString());
@@ -116,7 +123,7 @@ public:
 };
 
 namespace Ui {
-    class registerUI: public Ui_Form_Register {};
+    class Form: public Ui_Form {};
 } // namespace Ui
 
 QT_END_NAMESPACE
