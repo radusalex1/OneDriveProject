@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include "DataBaseConnect.h"
+#include <QFileDialog>
 
 OneDriveRegister::OneDriveRegister()
 {
@@ -58,4 +59,9 @@ void OneDriveRegister::on_pushButton_GoBack_clicked()
     onedriveLogin->setAttribute(Qt::WA_DeleteOnClose, true);   //delete itself on closing
     QObject::connect(onedriveLogin, SIGNAL(destroyed(QObject*)), this, SLOT(show()));
     onedriveLogin->show();
+}
+
+void OneDriveRegister::on_pushButton_ChoosePath_clicked()
+{
+    m_path = QFileDialog::getExistingDirectory(this, tr("Open Directory"), "/home", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 }
