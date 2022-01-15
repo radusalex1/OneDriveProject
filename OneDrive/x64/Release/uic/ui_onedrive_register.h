@@ -123,7 +123,7 @@ public:
 };
 
 namespace Ui {
-    class Form: public Ui_Form {};
+    class registerUI: public Ui_Form_Register {};
 } // namespace Ui
 
 QT_END_NAMESPACE
