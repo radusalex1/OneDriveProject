@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Form
+class Ui_Form_Register
 {
 public:
     QGroupBox *groupBox;
