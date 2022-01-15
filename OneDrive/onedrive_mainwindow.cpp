@@ -94,7 +94,16 @@ void OneDriveMainWindow::on_pushButton_rename_clicked()
 void OneDriveMainWindow::on_pushButton_createdir_clicked()
 {
     QString newName = QInputDialog::getText(this, "Create new directory", "Enter a name: ");
-    QDir(this->m_Path.c_str()).mkdir(newName);
+
+    QDir selectedDir(m_selectedFile);
+    if (selectedDir.exists())
+    {
+        selectedDir.mkdir(newName);
+    }
+    else
+    {
+        QDir(this->m_Path.c_str()).mkdir(newName);
+    }
 }
 
 void OneDriveMainWindow::on_pushButton_delete_clicked()
