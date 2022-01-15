@@ -30,7 +30,7 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
     }
     connectionobject.close();
 }
-void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::string password)
+void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::string password, std::string path)
 {
     
         std::ifstream f("appconfig.txt");
@@ -41,7 +41,7 @@ void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::stri
 
         pqxx::work worker(connectionobject);
                                                                                  
-        std::string q3 = "INSERT INTO public.users(username, password) VALUES ('" + username + "','" + password + "');";
+        std::string q3 = "INSERT INTO public.users(username, password) VALUES ('" + username + "','" + password + "','" + path + "');";
         worker.exec(q3);
         worker.commit();
         //connectionobject.close();
