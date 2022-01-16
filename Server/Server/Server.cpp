@@ -118,10 +118,12 @@ void SendFiles(SOCKET clientSock)
 			} while (file.gcount() > 0);
 
 			file.close();
+
 			
 		}
 
 }
+
 void GetFiles(SOCKET clientSock)
 {
 	std::ofstream file;
@@ -163,6 +165,8 @@ void GetFiles(SOCKET clientSock)
 		file.write(bufferFile, byRecv);
 		fileDownloaded += byRecv;
 	} while (fileDownloaded < fileRequestedsize);
+
+
 	file.close();
 }
 int main() {

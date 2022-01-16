@@ -40,6 +40,7 @@ SOCKET initializeSocket()
 	}
 	return clientSock;
 }
+
 std::string userInputFunction()
 {
 	std::string option;
@@ -53,17 +54,21 @@ std::string userInputFunction()
 		return "get";
 	}
 }
+
 std::string SendUserOption(SOCKET sock)
 {
 	std::string userInput = userInputFunction();
+
 	int userOption = send(sock, userInput.c_str(), sizeof(int), 0);
 	if (userOption == 0 || userOption == -1) {
 		closesocket(sock);
 		WSACleanup();
 		return NULL ;
 	}
+
 	return userInput;
 }
+
 std::string SourcePath()
 {
 	char fileRequested[FILENAME_MAX];
@@ -79,6 +84,8 @@ std::string DestinationPath()
 	std::getline(std::cin, pathRequested);
 	return pathRequested;
 }
+
+
 void GetFiles(SOCKET sock)
 {
 	std::ofstream file;
@@ -101,8 +108,6 @@ void GetFiles(SOCKET sock)
 		std::string Path = destinationPath + fileName;
 		sleep_for(nanoseconds(10000));
 		
-		
-
 
 			int byRecv = send(sock, fileRequested.c_str(), FILENAME_MAX, 0);
 			if (byRecv == 0 || byRecv == -1) {
@@ -134,6 +139,7 @@ void GetFiles(SOCKET sock)
 				fileDownloaded += byRecv;
 			} while (fileDownloaded < fileRequestedsize);
 			
+
 			file.close();
 
 }
@@ -192,13 +198,11 @@ void SendFiles(SOCKET sock)
 				}
 			} while (file.gcount() > 0);
 			file.close();
-		
+
 	} while (file.is_open());
 }
 void main() 
 {
-//C:\Users\Radu\Desktop\ServerDocuments\
-//D:/BackgroundLoginImg.jpg
 
 	SOCKET sock = initializeSocket();
 	

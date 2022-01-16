@@ -4,8 +4,8 @@ class DataBaseConnect
 {
 public:
 	DataBaseConnect();
-	bool isUser(std::string username, std::string password);
-	void newUSerRegisterCredentials(std::string username, std::string password, std::string path);
-	std::string GetUserPath(std::string);
+	bool isUser(const std::string &username, const std::string &password);
+	void newUSerRegisterCredentials(const std::string &username, const std::string &password, const std::string &path);
+	std::string GetUserPath(const std::string &);
 };
 

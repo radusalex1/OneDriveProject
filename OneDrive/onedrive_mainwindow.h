@@ -12,7 +12,7 @@ class OneDriveMainWindow : public QWidget
 public:
 
     OneDriveMainWindow();
-    OneDriveMainWindow(std::string username);
+    OneDriveMainWindow(const std::string &username);
     ~OneDriveMainWindow();
 
 private slots:

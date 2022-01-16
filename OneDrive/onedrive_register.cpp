@@ -26,8 +26,6 @@ OneDriveRegister::OneDriveRegister()
 
 void OneDriveRegister::on_pushButton_registerMethod_clicked()
 {
-    
-
     std::string newUserUsername = m_ui.line_username->text().toStdString();
     std::string newUserPassword = m_ui.line_password->text().toStdString();
     DataBaseConnect* dbc = new DataBaseConnect();

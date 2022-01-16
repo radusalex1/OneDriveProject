@@ -6,7 +6,7 @@ DataBaseConnect::DataBaseConnect()
     
 }
 
-bool DataBaseConnect::isUser(std::string username, std::string password)
+bool DataBaseConnect::isUser(const std::string & username, const std::string & password)
 {
     std::ifstream f("appconfig.txt");
     std::string connectionstring;
@@ -16,7 +16,7 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
 
     pqxx::work worker(connectionobject);
 
-    std::string q = "select * from users where username='" + username + "';"; /// nu am gasit alta metoda mai ok de a forma querryul
+    std::string q = "select * from users where username='" + username + "';";
 
     pqxx::result result = worker.exec(q);
 
@@ -30,7 +30,7 @@ bool DataBaseConnect::isUser(std::string username, std::string password)
     }
     connectionobject.close();
 }
-void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::string password, std::string path)
+void DataBaseConnect::newUSerRegisterCredentials(const std::string & username, const std::string & password, const std::string & path)
 {
     
         std::ifstream f("appconfig.txt");
@@ -44,11 +44,10 @@ void DataBaseConnect::newUSerRegisterCredentials(std::string username, std::stri
         std::string q3 = "INSERT INTO public.users(username, password, path) VALUES ('" + username + "','" + password + "','" + path + "');";
         worker.exec(q3);
         worker.commit();
-        //connectionobject.close();
 
 }
 
-std::string DataBaseConnect::GetUserPath(std::string username)
+std::string DataBaseConnect::GetUserPath(const std::string &username)
 {
     std::ifstream f("appconfig.txt");
     std::string connectionstring;
