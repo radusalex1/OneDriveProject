@@ -31,6 +31,7 @@ void OneDrive::on_pushButton_login_clicked()
 {
     std::string username = m_ui.line_username->text().toStdString();
     std::string password = m_ui.line_password->text().toStdString();
+
     DataBaseConnect *dbc = new DataBaseConnect();
 
     if (dbc->isUser(username,password)) 

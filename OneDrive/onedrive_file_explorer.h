@@ -14,8 +14,8 @@ public:
     OneDriveFileExplorer(std::string username, QWidget* parent = Q_NULLPTR);
     ~OneDriveFileExplorer();
     std::string GetUserPathToFiles();
-    void SendFilesNewMethod(std::string, std::string);
-    void GetFilesNewMethod(std::string);
+    void SendFilesNewMethod(const std::string & FileSourcePath, const std::string& Path);
+    void GetFilesNewMethod(const std::string & destinationPath);
     void ServerProcess();
     void ClientProcess();
 

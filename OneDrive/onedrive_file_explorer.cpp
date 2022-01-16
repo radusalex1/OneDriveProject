@@ -25,12 +25,11 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     palette.setBrush(QPalette::Window, background);
     this->setPalette(palette);
 
-    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
+    this->setWindowIcon(QIcon("Logo.png"));
     QCommonStyle style;
     m_ui.pushButton_LR->setIcon(style.standardIcon(QStyle::SP_ArrowRight));
     m_ui.pushButton_RL->setIcon(style.standardIcon(QStyle::SP_ArrowLeft));
-    //this->setWindowState(Qt::WindowMinimized);
-    
+
     QString dirPath = "C:/";
     m_dirmodel = new QFileSystemModel(this);
     m_dirmodel->setFilter(QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files);
@@ -47,7 +46,7 @@ OneDriveFileExplorer::OneDriveFileExplorer(QWidget* parent)
     m_ui.treeViewDrive->setRootIndex(m_dirmodelDrive->index(dirPath));
 }
 
-void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index) //here we send files
+void OneDriveFileExplorer::on_treeViewPC_clicked(QModelIndex index)
 {
     m_selectedFile = m_dirmodel->fileInfo(index).absoluteFilePath();
 }
@@ -64,11 +63,11 @@ OneDriveFileExplorer::OneDriveFileExplorer(std::string username, QWidget* parent
     this->setPalette(palette);
 
     this->m_Username = username;
-    this->m_Path = GetUserPathToFiles(); /// aici ii dau calea din fisiere.
+    this->m_Path = GetUserPathToFiles();
 
 
-    this->setWindowIcon(QIcon("Logo.png"));//Generate window icon
-    //this->setWindowState(Qt::WindowMinimized);
+    this->setWindowIcon(QIcon("Logo.png"));
+
     QCommonStyle style;
     m_ui.pushButton_LR->setIcon(style.standardIcon(QStyle::SP_ArrowRight));
     m_ui.pushButton_RL->setIcon(style.standardIcon(QStyle::SP_ArrowLeft));
@@ -100,7 +99,7 @@ std::string OneDriveFileExplorer::GetUserPathToFiles()
     DataBaseConnect* dbc = new DataBaseConnect();
     return dbc->GetUserPath(this->m_Username);
 }
-void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::string Path)
+void OneDriveFileExplorer::SendFilesNewMethod(const std::string &FileSourcePath, const std::string &Path)
 {
     QFile file(filename);
     file.resize(0);
@@ -118,7 +117,7 @@ void OneDriveFileExplorer::SendFilesNewMethod(std::string FileSourcePath, std::s
     ClientProcess();
 }
 
-void OneDriveFileExplorer::GetFilesNewMethod(std::string destinationPath)
+void OneDriveFileExplorer::GetFilesNewMethod(const std::string &destinationPath)
 { 
     QFile file(filename);
 
@@ -154,11 +153,12 @@ void OneDriveFileExplorer::on_treeViewPC_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(m_selectedFile));
 }
+
 void OneDriveFileExplorer::on_treeViewDrive_clicked(QModelIndex index)
 {
     m_selectedFile = m_dirmodelDrive->fileInfo(index).absoluteFilePath();
-
 }
+
 void OneDriveFileExplorer::on_treeViewDrive_doubleClicked(QModelIndex index)
 {
     QDesktopServices::openUrl(QUrl::fromLocalFile(m_selectedFile));
@@ -179,6 +179,7 @@ void OneDriveFileExplorer::on_pushButton_RL_clicked()
 
     QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),"/home", QFileDialog::ShowDirsOnly|QFileDialog::DontResolveSymlinks);
     qDebug() << dir;
+    dir += "/";
     GetFilesNewMethod(dir.toStdString());
     
 }

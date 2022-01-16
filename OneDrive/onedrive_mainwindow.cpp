@@ -38,7 +38,7 @@ void OneDriveMainWindow::on_pushButton_addfile_clicked()
     onedriveFileExplorer->open();
 }
 
-OneDriveMainWindow::OneDriveMainWindow(std::string username)
+OneDriveMainWindow::OneDriveMainWindow(const std::string &username)
 {
     m_ui.setupUi(this);
 
